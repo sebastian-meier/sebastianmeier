@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    @media all {
+      .page-break { display: none; }
+    }
+
+    @media print {
+      .page-break { display: block; page-break-before: always; }
+      li { page-break-inside: avoid; }
+    }
+
+    body,html{
+      margin:0;
+      padding:0;
+      border:0;
+      font-family:Proxima Nova;
+    }
+
+    body{
+      max-width:70%;
+      margin: 0 auto;
+    }
+
+    h2{
+      text-transform: capitalize;
+    }
+
+    ul, li{
+      margin:0;
+      padding:0;
+      list-style: none;
+    }
+
+    li{
+      display: block;
+      border-bottom:1px solid rgba(0,0,0,0.5);
+      padding-bottom:5px;
+      margin-bottom:15px;
+    }
+
+    div.table { 
+      display: table; 
+      border-collapse:collapse; 
+    }
+    div.tr { 
+      display:table-row; 
+    }
+    div.td { 
+      display:table-cell; 
+    }
+
+    span.year{
+      font-weight:bold;
+      display: inline-block;
+      width:100px;
+    }
+
+    span.skill{
+      display: inline-block;
+      width:200px;
+    }
+
+    span.job{
+      font-weight:bold;
+    }
+
+    span.type-position{
+      font-style: italic;
+    }
+
+    span.type-position, span.examples{
+      display: inline-block;
+    }
+
+    span.examples{
+      font-size:12px;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Application Letter</h2>
+    <p>
+      Dear Ladies and Gentlemen,<br /><br />
+      i hereby apply to the advertised position <strong>Data Visualization Specialist (Contract)-1700037605</strong>. Attached you will find my curriculum vitae containing:<br />
+      <br />
+      01 / Work<br />
+      02 / Education<br />
+      03 / Teaching<br />
+      04 / Talks<br />
+      05 / Publications<br />
+      06 / Other Activities<br />
+      07 / Skills<br />
+      <br />
+      Sincerely yours<br /><br />
+      <strong>Sebastian Meier</strong>
+
+    </p>
+  </div>
+  <div class="page-break"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+  var sections = {
+    'work':false,
+    'education':false,
+    'teaching':false,
+    'talks':false,
+    'publications':false,
+    'other':false,
+    'skills':false
+  };
+
+  var loadCount = 0;
+  var loadMax = 0;
+  var sectionMap = {};
+  for(var key in sections){ sectionMap[loadMax] = key; loadMax++; }
+
+
+  function load(){
+    var i = 0;
+    for(var key in sections){
+      if(i == loadCount){
+        d3.csv('./data/'+key+'.csv', function(err, data){
+          if(err) console.log(err);
+
+          sections[sectionMap[loadCount]] = data;
+          
+          loadCount++;
+          if(loadCount === loadMax){
+            build();
+          }else{
+            load();
+          }
+        });    
+      }
+      i++;
+    }
+  }
+
+  load();
+
+  function build(){
+    var sectionData = [];
+    for(var key in sections){sectionData.push({key:key,data:sections[key]});}
+
+    var body = d3.select('body');
+
+    for(var i = 0; i<sectionData.length; i++){
+      var section = sectionData[i].data;
+      var container = body.append('div').attr('class','container');
+      container.append('h2').text('0'+(i+1)+' / '+((i == 5)?'Other Activities':sectionData[i].key));
+
+      switch(sectionData[i].key){
+        case 'work':
+          section.sort(function(a,b){
+            if (a.end>b.end) {
+              return -1;
+            }
+            if (a.end<b.end) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+
+            li.append('div').attr('class','td').append('span').attr('class','year').text(section[j].start+" - "+section[j].end);
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','job').text(section[j].job);
+            td.append('br');
+            td.append('span').attr('class','type-position').text(section[j].type+', '+section[j].position);
+            if(section[j].examples.length >= 1){
+              td.append('br');
+              td.append('span').attr('class','examples').text(section[j].examples);
+            }
+          }
+
+        break;
+        case 'other':
+          section.sort(function(a,b){
+            if (a.year>b.year) {
+              return -1;
+            }
+            if (a.year<b.year) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+
+            li.append('div').attr('class','td').append('span').attr('class','year').text(section[j].year);
+            var td = li.append('div').attr('class','td');
+            td.append('strong').text(section[j].title+", "+section[j].position);
+            td.append('br');
+            td.append('i').text(section[j].location);
+            td.append('br');
+            td.append('span').attr('class','examples').text(section[j].description);
+          }
+
+          body.append('div').attr('class','page-break');
+
+        break;
+        case 'education':
+          section.sort(function(a,b){
+            if (a.end>b.end) {
+              return -1;
+            }
+            if (a.end<b.end) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+            li.append('div').attr('class','td').append('span').attr('class','year').text(section[j].start+" - "+section[j].end);
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','job').text(section[j].type+", "+section[j].degree);
+            td.append('br');
+            td.append('span').attr('class','type-position').text(section[j].university);
+          }
+
+          body.append('div').attr('class','page-break');
+        break;
+        case 'talks':
+          section.sort(function(a,b){
+            if (a.year>b.year) {
+              return -1;
+            }
+            if (a.year<b.year) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+            li.append('div').attr('class','td').append('span').attr('class','year').text(section[j].year);
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','job').text(section[j].title);
+            td.append('br');
+            td.append('span').attr('class','type-position').text(section[j].conference+', '+section[j].location);
+          }
+
+          body.append('div').attr('class','page-break');
+
+        break;
+        case 'publications':
+          section.sort(function(a,b){
+            if (a.year>b.year) {
+              return -1;
+            }
+            if (a.year<b.year) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+            var td = li.append('div').attr('class','td');
+            td.append('span').html('&nbsp;');
+            td.append('br');
+            td.append('span').attr('class','year').text(section[j].year);
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','examples').html(section[j].type);
+            td.append('br');
+            td.append('strong').text(section[j].title+'. ');
+            td.append('i').text(section[j].authors);
+            td.append('span').text(' ('+section[j].year+') '+section[j].reference);
+          }
+
+          body.append('div').attr('class','page-break');
+
+        break;
+        case 'skills':
+          /*section.sort(function(a,b){
+            if (a.order<b.order) {
+              return -1;
+            }
+            if (a.order>b.order) {
+              return 1;
+            }
+            return 0;
+          });*/
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          var last_type = '';
+
+          for(var j = 0; j<section.length; j++){
+
+            if(last_type != section[j].type){
+              last_type = section[j].type;
+              list.append('li').append('strong').text(section[j].type);
+            }
+
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','skill').text(section[j].skill);
+            var td = li.append('div').attr('class','td');
+            td.append('i').html(section[j].level);
+          }
+
+        break;
+        case 'teaching':
+          section.sort(function(a,b){
+            if (a.year>b.year) {
+              return -1;
+            }
+            if (a.year<b.year) {
+              return 1;
+            }
+            return 0;
+          });
+
+          var list = container.append('ul').attr('class', sectionData[i].key);
+
+          for(var j = 0; j<section.length; j++){
+            var li = list.append('li').append('div').attr('class','table').append('div').attr('class','tr');
+            var td = li.append('div').attr('class','td');
+            td.append('span').attr('class','examples').html('&nbsp;')
+            td.append('br');
+            td.append('span').attr('class','year').text(section[j].year);
+            var td = li.append('div').attr('class','td');
+            section[j].type
+            td.append('span').attr('class','examples').text(section[j].type);
+            td.append('br');
+            td.append('span').attr('class','job').text(section[j].title);
+            td.append('br');
+            td.append('span').attr('class','type-position').text(section[j].university);
+          }
+
+          body.append('div').attr('class','page-break');
+
+        break;
+      }
+
+    }
+  }
+
+</script>
+</body>
+</html>

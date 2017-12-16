@@ -1,0 +1,24 @@
+{
+  "name": "sebastianmeier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "builder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-meier/sebastianmeier.git"
+  },
+  "author": "Sebastian Meier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebastian-meier/sebastianmeier/issues"
+  },
+  "homepage": "https://github.com/sebastian-meier/sebastianmeier#readme",
+  "dependencies": {
+    "d3": "^4.7.4",
+    "fs": "0.0.1-security",
+    "jsdom": "^9.12.0"
+  }
+}
