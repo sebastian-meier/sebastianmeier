@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/seb_meier
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://sebastianmeier.eu
+  * I am seb_meier (https://keybase.io/seb_meier) on keybase.
+  * I have a public key ASClVDVe2T3A8YUGfjNcDmim39dtJ4cNnsRQ9Mhzi5_Idwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a554355ed93dc0f185067e335c0e68a6dfd76d27870d9ec450f4c8738b9fc8770a",
+      "host": "keybase.io",
+      "kid": "0120a554355ed93dc0f185067e335c0e68a6dfd76d27870d9ec450f4c8738b9fc8770a",
+      "uid": "107c136727fe1e59a1461dfc34da5d19",
+      "username": "seb_meier"
+    },
+    "merkle_root": {
+      "ctime": 1509565741,
+      "hash": "3dbf5d8edbc4f89dbdd80650a83d4d28fbb4505674ac1d85319baebea847a04eaf39dc423f4c7022ce4190519e4620785e834fb3bed8ec9b02f1369e90988581",
+      "hash_meta": "5404030c6302e2aaa55aa70b7655a17c7e8b5c95cac91d41744323903f2e8a39",
+      "seqno": 1656306
+    },
+    "service": {
+      "hostname": "sebastianmeier.eu",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.34"
+  },
+  "ctime": 1509565769,
+  "expire_in": 504576000,
+  "prev": "50783a75554ee133629cc2af40f70981e67868c0c888b5f6936fdc8b456ab519",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgpVQ1Xtk9wPGFBn4zXA5opt/XbSeHDZ7EUPTIc4ufyHcKp3BheWxvYWTFA0p7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYTU1NDM1NWVkOTNkYzBmMTg1MDY3ZTMzNWMwZTY4YTZkZmQ3NmQyNzg3MGQ5ZWM0NTBmNGM4NzM4YjlmYzg3NzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYTU1NDM1NWVkOTNkYzBmMTg1MDY3ZTMzNWMwZTY4YTZkZmQ3NmQyNzg3MGQ5ZWM0NTBmNGM4NzM4YjlmYzg3NzBhIiwidWlkIjoiMTA3YzEzNjcyN2ZlMWU1OWExNDYxZGZjMzRkYTVkMTkiLCJ1c2VybmFtZSI6InNlYl9tZWllciJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUwOTU2NTc0MSwiaGFzaCI6IjNkYmY1ZDhlZGJjNGY4OWRiZGQ4MDY1MGE4M2Q0ZDI4ZmJiNDUwNTY3NGFjMWQ4NTMxOWJhZWJlYTg0N2EwNGVhZjM5ZGM0MjNmNGM3MDIyY2U0MTkwNTE5ZTQ2MjA3ODVlODM0ZmIzYmVkOGVjOWIwMmYxMzY5ZTkwOTg4NTgxIiwiaGFzaF9tZXRhIjoiNTQwNDAzMGM2MzAyZTJhYWE1NWFhNzBiNzY1NWExN2M3ZThiNWM5NWNhYzkxZDQxNzQ0MzIzOTAzZjJlOGEzOSIsInNlcW5vIjoxNjU2MzA2fSwic2VydmljZSI6eyJob3N0bmFtZSI6InNlYmFzdGlhbm1laWVyLmV1IiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMzQifSwiY3RpbWUiOjE1MDk1NjU3NjksImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJwcmV2IjoiNTA3ODNhNzU1NTRlZTEzMzYyOWNjMmFmNDBmNzA5ODFlNjc4NjhjMGM4ODhiNWY2OTM2ZmRjOGI0NTZhYjUxOSIsInNlcW5vIjo2LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQFlo3AZ23mWKh5Ae28UMdZxNaAAxAUkmsulzt03VxKnRbicrZ+u0xkfp3XKYNR5U57aWIkdeFtGdz+nktlBX6w+oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCCjBVdHmtE/RhFJIWE5HvsIDkuHHce3tkdIxwgY300T+KN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/seb_meier
+
+==================================================================

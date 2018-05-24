@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<base href="" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Too many Markers, revisited | Sebastian Meier</title>
+    <link rel="shortcut icon" href="/wp-content/themes/seb/favicon.ico">
+	
+	
+	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/seb/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-bibtex-cite-plugin-styles-css'  href='/wp-content/plugins/wp-bibtex-cite/public/assets/css/public.css?ver=0.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/seb/style.css?ver=4.7.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='/wp-content/themes/seb/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=5.3' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/themes/seb/js/picturefill.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/wp-bibtex-cite/public/assets/js/public.js?ver=0.0.1'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/jquery.linewrap.1.0.min.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+
+ 
+
+<link rel='next' title='Google Maps and beyond: Karten für Desktop, Mobile und Print' href='/2014/07/12/google-maps-and-beyond-karten-fur-desktop-mobile-und-print/' />
+
+<link rel="canonical" href="/2014/06/22/too-many-markers-revisited/" />
+<link rel='shortlink' href='/?p=90' />
+
+
+    <style type="text/css">
+        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
+    </style>
+    </head>
+
+<body class="post-template-default single single-post postid-90 single-format-standard masthead-fixed full-width singular">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<div class="site-title"><a href="/" rel="home">Sebastian Meier</a></div>
+						<div class="site-description"><a href="/" rel="home">Information Design &amp; Research</a></div>
+			
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<div class="menu-toggle">Primary Menu</div>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-390"><a title="Projects" href="/">Projects</a></li>
+<li id="menu-item-569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-569"><a href="/blog/">Blog</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="/cv/">CV</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-90" class="post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-publication">
+		<picture>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_markercluster.jpg" media="(min-width: 1000px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_markercluster-1000x266.jpg" media="(min-width: 700px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_markercluster-700x186.jpg" media="(min-width: 300px)">
+		<!--[if IE 9]></video><![endif]-->
+		<img width="1260" height="336" class="attachment-twentyfourteen-full-width wp-post-image" srcset="/wp-content/uploads/2014/07/wp_bg_markercluster-300x80.jpg" alt="Too many Markers, revisited">
+	</picture>
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links">				<a>Publication</a>
+			</span>
+		</div>
+		<h1 class="entry-title wrapper">Too many Markers, revisited</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="/2014/06/22/too-many-markers-revisited/" rel="bookmark"><time class="entry-date" datetime="2014-06-22T09:28:35+00:00">June 22, 2014</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="/author/admin/" rel="author">Sebastian Meier</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<h1>An empirical analysis of web-based methods for overcoming the problem of too many markers in zoomable mapping applications</h1>
+<p>This paper was published at the 14th International Conference on Computational Science and Its Applications (<a href="http://www.iccsa.org/">ICCSA 2014</a>). Authors: Sebastian Meier (Author), Frank Heidmann (Co-Author)<br />
+<a href="/wp-content/uploads/2014/06/4264a121.pdf"><span class="genericon genericon-book">&nbsp;</span> Download Paper as PDF</a></p>
+<h2>Abstract</h2>
+<p><em>The growing amount of available data is creating a need for mass-data visualizations in many areas. The mapping of large spatial data sets is not only of interest for experts anymore but moves into the domain of public applications with regard to the latest advances in web cartography. This creates a need for usable and understandable interactive techniques that allow the visualization and exploration of large spatial data sets. In a series of experiments we look at a variety of technologies aiming at overcoming the obstacle of displaying large spatial datasets in interactive mapping applications. In this short paper we will present our ongoing research on the methods of Marker Clusters, Heatmaps and Tiled Heatmaps as well as a quantitative and qualitative empirical evaluations of the performance of each of these methods. We conclude with what we think should be a new direction for further research in this area.</em></p>
+<p>Keywords: Geovisualization, maps, web, study, marker, cluster, heatmap</p>
+<h2>I. INTRODUCTION</h2>
+<p>The growing amount of data is a driving force behind new fields of research in mass data visualization. Latest example for research conducted in this area is the field of network visualizations or the massive data plots by Hochman and Manovich (Hochman &amp; Manovich, 2013). One might argue that mass data visualizations are not new. What might be new are the technologies available for visualizations as well as the target audiences. The field of visualization is moving away from being an expert-only field towards being a field that is relevant for the public. Making data accessible and readable for scholars from many different fields as well as for a broad public audience.<br />
+The same applies for data visualization in cartography. Experts in the field have been working with mass data and geovisualization techniques since the introduction of the first Geo Information Systems (GIS) in the late 1960s (Coppock &amp; Rhind, 2001). But especially with the advances in web cartography and the growing popularity of modern web mapping applications like Google maps (Google Inc., 2014) or Bing (Microsoft Corporation, 2014), we see the public and other fields involved in the usage of modern web-based cartographic applications for private and professional purposes. At the same time, we see a growing number of services collecting or creating large amounts of spatial data. Services like yelp (Yelp, 2014) or foursquare (Foursquare, 2014) for example. This combination of trends creates the need for new spatial mass data visualization methods for web-based cartographic applications.</p>
+<div id="attachment_164" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/markers.png" data-rel="lightbox-gallery-MU0U" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/markers.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/markers-300x123.png" alt="Figure 1. Left: 200 Markers, Right: 1 Marker." class="size-medium wp-image-164" width="700" height="288">
+</picture></a><p class="wp-caption-text">Figure 1. Left: 200 Markers, Right: 1 Marker.</p></div>
+<h2>II. CHALLENGE</h2>
+<p>Looking at small datasets the conventional marker is still sufficient, but with a growing number of data points, maps become confusing (Fig. 1). This is where our research starts. In the field of cartography, a large research corpus already exists when it comes to two-dimensional static maps. Research has been conducted with focus on e.g. label placement (Christensen, Marks, &amp; Shieber, 1995; Marks &amp; Shieber, 1991), dot placement (Hey, 2011) or – when it comes to clustered data – choropleth maps. All of this shows us how to work with visual features in dense spatial data environments.<br />
+The problem that arises when we try to translate this knowledge into the field of web cartography is the factor of zoomability. While the old methods concentrated on displaying information at one specific zoom-factor, modern web mapping applications allow the user to zoom in and out and thereby reach different levels of detail. As mentioned in Ben Shneidermans visualization mantra &#8220;overview first, zoom and filter, then details-on-demand&#8221; (Shneiderman, 1996), those web applications allow users to start at a low zoom-level and see a big area with a large spatial data-set and then zoom in and thereby minimize the amount of data being displayed.<br />
+<em>The challenge is to overcome the confusing marker agglomerations in low zoom levels but still provide the user a detailed overview. Or as Woodruf et al framed it: “A constant information density” (Woodruff, Landay, &amp; Stonebraker , 1998).</em></p>
+<h2>III. EXISTING METHODS</h2>
+<p>Over the last few years a couple of methods have been developed to overcome web-based geovisualization applications with too many markers. The most prominent methods are marker clusters, other solutions include heatmaps and choropleth based clustering approaches or tiled heatmap methods.</p>
+<h3>A. Marker Cluster</h3>
+<p>The marker cluster uses a grouping approach: if the density of markers is too high in a specified area, the markers are grouped and replaced by a cluster-object (Fig. 2.1) (Delort, 2010; Leaflet, 2014; Mahe &amp; Broadfoot, 2010).<br />
+As a result of the clustering it is required to introduce a new visual entity to the map, which differentiates the cluster- object from the single markers. In addition to simply differentiating the two entities, some of the existing solutions let the reader of the map know how many markers are merged into each cluster-object. The simplest way of doing this is adding a label with a number indicating how many markers were merged.</p>
+<h3>B. Heatmaps</h3>
+<p>The heatmap approach is a way of calculating the density of spatial data points per region and applying a color from a predefined color range to this region. Most commonly the color range of red for high to blue for low density is used in those visualizations (Fig. 2.2).</p>
+<h3>C. Tiled Heatmaps</h3>
+<p>On a very rudimentary level the tiled heatmap and the heatmap follow a similar approach. The tiled heatmap is also calculating the data points per region and applying a corresponding color to the value, but in contrast to the heatmap the tiled heatmap has a lower resolution (Fig. 2.3).</p>
+<h3>D. Choropleth Maps</h3>
+<p>Similar to heatmaps and tiled heatmaps choropleth maps also calculate data points per region. In contrast to heatmaps and tiled heatmaps that use a raster that is independent from the map, the choropleth map is using shapes that are predefined. Those predefined shapes can for example be of political origins and depict national borders. We included the choropleth maps in this list of methods because in some cases it is a valid solution for clustering spatial data points. We have excluded this type of visualization from our further research because this type of visualization requires additional data regarding the predefined shapes. This data is not available in most cases but of huge importance in the process since the zoomability of choropleth maps requires more detailed shapes for higher zoom levels.</p>
+<h2>IV. RELATED WORKS</h2>
+<p>The existing research regarding marker clusters is mostly looking at applications (Komninos, Besharat, Ferreira, &amp; Garofalakis, 2013) or the algorithmic backbone of the clusters, that means at the algorithms that decide how the clustering is computed (Bär &amp; Hurni, 2011; Delort, 2010;Kefaloukos, Vaz Salles, &amp; Zachariasen, 2012; Stefanakis, 1996). Besides this computer-centered research the human- centered hci research on marker clusters is still not very profound. This is why our research is focusing on gaining more insights into the usability aspects and thereby the perceptual-cognitive tasks that those visualization methods bring with them, both of which were framed by Chen as 2 of the 10 unsolved information visualization problems (Chaomei Chen, 2005). ￼￼</p>
+<div id="attachment_165" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/markercluster.png" data-rel="lightbox-gallery-MU0U" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/markercluster.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/markercluster-300x78.png" alt="Figure 2. 1. Marker Cluster, 2. Heatmaps, 3. Tiled Heatmaps" class="size-medium wp-image-165" width="700" height="182">
+</picture></a><p class="wp-caption-text">Figure 2. 1. Marker Cluster, 2. Heatmaps, 3. Tiled Heatmaps</p></div>
+<h2>V . EXPERIMENT</h2>
+<p>In this chapter we will describe two experiments that were conducted on the methods described above. The first experiment is looking at the performance of the subject group in terms of time and precision, while the second experiment is looking at the way people read and understand the visualizations.<br />
+We used a real world data set for the experiment, containing data on restaurants in the inner city of Berlin, Germany. The dataset was holding 15.329 positions in the urban area of Berlin.<br />
+The experiments were conducted through amazons mechanical turk (AMT) (Amazon Inc., 2014). The mechanical turk is an online platform that allows so-called workers to perform small tasks and in return being paid by the so-called requesters. Conducting academic surveys by means of the mechanical turk system is still a very new way of conducting surveys, but has already generated good results and positive feedback from a wide range of research fields (Buhrmester, Kwang, &amp; Gosling, 2011; Paolacci, Chandler, &amp; Ipeirotis, 2010). As long as several requirements are met, like keeping tasks short, easy to understand, and including verifiable questions, as for example Kittur et al suggest, mechanical turk can generate valid results (Kittur, Chi, &amp; Suh, 2008). Joel Ross et al presented an overview of the demographic development of the mechanical turk participants (Ross, Irani, Silberman, Zaldivar, &amp; Tomlinson, 2010), which says that workers come mostly from the US and India and that there is a slight bias towards female workers. The demographic data we collected showed that the participants we reached were more men (60%) and more Indian participants than workers from other countries (50%). The age of our participants ranged from 20 to 40 years with a peak in the mid 20s.<br />
+In our experiment we did not only want to test the existing visualizations against each other, but also wanted to go a step further and test how adding visual variables to the cluster-objects would influence the participants performance of comparing the cluster-objects with each other. Visual variables most prominently introduced by Bertin in 1983 (Bertin, Dodge, Kitchin, &amp; Perkins, 2011) help the reader to not only differentiate between two objects but also to rank objects for example by size or color (Carpendale, 2008), which is one of the most fundamental functionalities of the visualization of a spatial data points (locate, read, classify, group and compare) (Heidmann, 2013).</p>
+<h3>A. Experiment I: Performance</h3>
+<h4>1) Experiment Design:</h4>
+<p>In our first experiment we compared the marker cluster extended through visual variables (size and color) with heatmaps and tiled heatmaps regarding accuracy and time (Fig. 3). Through the variation of variables we reached a number of 11 visualizations, which were tested by 330 participants, 30 participants per visualization.<br />
+After answering a demographic questionnaire the participants received a short explanation on how the presented geovisualization works, which means they were explained which visual variables indicate high and low values on the map. Before they were allowed to see the map they were briefed on their first task: Click on the area with the highest/lowest values. Then the participants were directed to a page showing the visualization on top of a map. After the participant selected an area they were redirected to the next map. Every participant had to work on 6 maps.<br />
+On the last page the participants had to perform a semantic differential (Hassenzahl, Platz, Burmester, &amp; Lehner, 2000) and a Subjective Mental Effort Questionnaire (SMEQ) which has proven to be a good tool for letting participants rate the difficulty of a task in a post-task questionnaire (Sauro &amp; Dumas, 2009).</p>
+<div id="attachment_167" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/markercluster-1.png" data-rel="lightbox-gallery-MU0U" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/markercluster-1.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/markercluster-1-300x101.png" alt="Figure 3. Visualization types used in Experiment I." class="size-full wp-image-167" width="700" height="237">
+</picture></a><p class="wp-caption-text">Figure 3. Visualization types used in Experiment I.</p></div>
+<h4>2) Evaluation</h4>
+<p>For evaluation purpose we collected the time it took participants to select the maximum or minimum value of each map they were shown as well as the precision of their task result, which means how close they were to the maximum or minimum.<br />
+The time distribution for all tasks was very close, the maximum differences between the averages were 4 seconds for the task of finding the maximum, and 5,5 seconds for the minimum. The bigger variation for the minimum goes along with the finding that the time for finding the minimum took an average of 35% longer across all visualizations. But we couldn’t find correlations to the visual variables or the visualization type.<br />
+The finding that the determination of the minimum was more difficult was also visible in the precision data. The task of finding the maximum had a maximum offset of 0.8%, the task of finding the minimum had maximum offset of 5%. Furthermore we could identify 2 patterns from the precision results (Fig. 4).</p>
+<div id="attachment_170" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/markercluster-2.png" data-rel="lightbox-gallery-MU0U" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/markercluster-2.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/markercluster-2-253x200.png" alt="Figure 4. Precision offset in % for finding the maximum (1. row) and finding the minimum (2. row)." class="size-full wp-image-170" width="700" height="552">
+</picture></a><p class="wp-caption-text">Figure 4. Precision offset in % for finding the maximum (1. row) and finding the minimum (2. row).</p></div>
+<p><em>a) Heatmaps and tiled heatmaps performed better than cluster maps:</em> This finding applies to tasks, finding the maximum and finding the minium. The three tiled heatmap visualizations performed best, followed by the heatmap, which performed equally good on finding the minimum but slightly worse for finding the maximum.</p>
+<p><em>b) Size is a good visual variable for identifying the maximum:</em> The visual variable size has proofen to be significant for identifying maximums (see Group 2 in Fig. 4). Regarding the task of finding the minimums, size has also been signifcant but not as outstanding as in the task of finding the maximum.</p>
+<p><em>c) Regarding the collected SMEQ and semantic differential values:</em> We received very similar values for each visualization and couldn&#8217;t find patterns or correlations regarding the visual variables nor the variable time or precision.</p>
+<h4>3) Discussion</h4>
+<p>From the results we can say that size is a good visual variable for marker clusters, which was identified by a previous study by Garlandini and Fabrikant who look at visual variables in spatial data visualization in general (Garlandini &amp; Fabrikant, 2009). Furthermore we saw that the heatmaps and tiled heatmaps performed very well, here we need further research through qualitative studies to find out why those visualizations performed better.</p>
+<h3>B. Experiment II:</h3>
+<p>Understanding In Experiment I we gave each participant an introduction in order to explain how the visualization works. In the second experiment we were interested to find out what participants would actually see in the visualizations when they were given no introduction.</p>
+<h4>1) Experiment Design</h4>
+<p>Therefore we transferred the visualization types from Experiment I that we then extended by the color that was used. While in Experiment I we only used red as a visual variable due to its high contrast to the underlying map, we added blue and green as additional colors in our second experiment, because our hypothesis was that <em>color will influence the understanding of what is shown in the visualization</em>.<br />
+The second experiment also started with a demographic questionnaire. After the first round of questions the participants were shown one of 15 visualizations (Fig. 5). One group was shown just the visualization and one group was shown the visualization with a title that said “Restaurants in the city of Berlin”, and they were all asked to describe what they think the visualization on top of the map was supposed to be. The test was conducted on 239 participants, but due to errors we had to exclude 29 data sets and came down to 210 participants, 14 per visualization, 7 per group.</p>
+<div id="attachment_171" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/markercluster-3.png" data-rel="lightbox-gallery-MU0U" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/markercluster-3.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/markercluster-3-300x135.png" alt="Figure 5. Visualization types used in Experiment II." class="size-full wp-image-171" width="700" height="316">
+</picture></a><p class="wp-caption-text">Figure 5. Visualization types used in Experiment II.</p></div>
+<h4>2) Evaluation</h4>
+<p>To evaluate the qualitative data we received from our participants we screened all answers first and identified a set of variables:</p>
+<p><em>a) Location or Area:</em> 70% of the participants connected the visualizations to either location or area data.</p>
+<p><em>b) Density and Ranking:</em> 40% of the participants identified the visual variables as a ranking of some sort, 13% even identified it as an indicator for density.</p>
+<p><em>c) Urban entity: </em>70% of the participants identified some sort of urban entity, this ranked from hotels, restaurants, parks to more statistical data like crime rates.</p>
+<p><em>d) Restaurant:</em> 77% of the participants, that were shown the title, identified the visualized entities to be restaurants.</p>
+<p><em>e) Water or Nature:</em> 7% of the participants identified the represented entity to be some form of nature, like trees or parks or to be related to water.</p>
+<p><em>f) Cities:</em> 4% of the participants did not understand the map and thought the markers were labels for cities. Color correlation: 90% of the participants who identified water or nature did it in cases when they were presented green or blue maps.</p>
+<p>From analyzing the results of our clustering process through the variables listed above we were able to identify some correlations and generate a series of insights:</p>
+<p><em>a) Heatmaps and Tiled Heatmaps are more likely to be connected to area data than point data:</em> 65% of the participants who received a heatmap or tiled heatmap saw area data like population density or crime rates in the data. Markers were instead referred to spatial location data, like restaurants or hotels. The only exceptions were the tiled heatmaps that used circles as visualizations, they seemed to be interpreted as markers and not as heatmaps.</p>
+<p><em>b) Density is an abstract concept, people refer visual variable ranking to more common rankings:</em> only 13% of the participants identified density, but 40% identified the visualization to be some sort of ranking. The most common association, especially from the participants who saw the title, was user rankings, like from a social media platform.</p>
+<p><em>c) Color and label texts are used to connect the visualization to the mental models of the participants:</em> the 7% of participants who saw nature and water were all participants who saw blue (water) or green (nature) visualizations. Beyond that we noticed several participants who tried to use the label information to make sense of the visualization. The numbers, actually representing the number of clustered data points, were connected to distances, ratings or highway ids.</p>
+<h4>3) Discussion</h4>
+<p>Even though the results discussed in the evaluation above sound promising, we have to point out that only 13% of participants identified the visualization to be about density. However, we were able to identify that heatmaps might not be the best visualization to show the density of location data and should instead be used to show areal data like population. Furthermore, the design of the visualization should take the single data items’ meaning into account, for example by visualizing data on water in blue.</p>
+<h2>VI. CONCLUSION</h2>
+<p>Marker clusters as well as heatmaps and tiled heatmaps are viable solutions for overcoming the problem of displaying a large number of markers in a small area from a technical viewpoint. But none of the proposed visualization methods has proven to be intuitively understood by our participants. From a design viewpoint we saw that it is important to add visual variables to the marker cluster object to help users identify, classify and compare the visual entities on the map.<br />
+As pointed out in the introduction the research presented in this paper is ongoing research. We see the two studies as a starting point for developing new methods and conducting further research on the cognitive processes involved in reading marker clusters, heatmaps and tiled heatmaps. Taking the findings of this paper into account we propose that new techniques should be developed that take the characteristics of the data into account and extend the existing visualizations in order to help users connect the visualization with the data beneath.</p>
+<h2>REFERENCES</h2>
+<p>[1] Amazon Inc. (2014). Amazon Mechanical Turk &#8211; Welcome. Retrieved March 10, 2014, from https://www.mturk.com/mturk/welcome</p>
+<p>[2] Bär, H. R., &amp; Hurni, L. (2011). Improved Density Estimation for the Visualisation of Literary Spaces. Cartographic Journal, the, 48(4), 309–316. doi:10.1179/1743277411Y.0000000022</p>
+<p>[3] Bertin, J., Dodge, M., Kitchin, R., &amp; Perkins, C. (2011). General Theory, from Semiology of Graphics. The Map Reader (pp. 8–16). Chichester, UK: John Wiley &amp; Sons, Ltd. doi:10.1002/9780470979587.ch2</p>
+<p>[4] Buhrmester, M., Kwang, T., &amp; Gosling, S. D. (2011). Amazon&#8217;s Mechanical Turk: A New Source of Inexpensive, Yet High-Quality, Data? Perspectives on Psychological Science, 6(1), 3–5. doi:10.1177/1745691610393980</p>
+<p>[5] Carpendale, M. S. T. (2008). Considering Visual Variables as a Basis for Information Visualisation.</p>
+<p>[6] Chaomei Chen. (2005). Top 10 Unsolved Information Visualization Problems. IEEE Computer Graphics and Applications, 25(4), 12–16. doi:10.1109/MCG.2005.91</p>
+<p>[7] Christensen, J., Marks, J., &amp; Shieber, S. (1995). An empirical study of algorithms for point-feature label placement. ACM Transactions on Graphics, 14(3), 203–232. doi:10.1145/212332.212334</p>
+<p>[8] Coppock, J. T., &amp; Rhind, D. W. (2001). The History of GIS (Vol. 1, pp. 21–43).</p>
+<p>[9] Delort, J.-Y. (2010). Hierarchical cluster visualization in web mapping systems (p. 1241). Presented at the the 19th international conference, New Y ork, New Y ork, USA: ACM Press. doi:10.1145/1772690.1772892</p>
+<p>[10] Foursquare. (2014, March 10). Berlin | Food, Nightlife, Entertainment. Retrieved March 10, 2014, from https://foursquare.com/</p>
+<p>[11] Garlandini, S., &amp; Fabrikant, S. I. (2009). Evaluating the Effectiveness and Efficiency of Visual Variables for Geographic Information Visualization. In Lecture Notes in Computer Science (Vol. 5756, pp. 195–211). Berlin, Heidelberg: Springer Berlin Heidelberg. doi:10.1007/978-3-642-03832-7_12</p>
+<p>[12] Google Inc. (2014, March 10). Google Maps. Retrieved March 10, 2014, from https://maps.google.com/</p>
+<p>[13] Hassenzahl, M., Platz, A., Burmester, M., &amp; Lehner, K. (2000). Hedonic and ergonomic quality aspects determine a software&#8217;s appeal (pp. 201–208). Presented at the the SIGCHI Conference, New York, New York, USA: ACM Press. doi:10.1145/332040.332432</p>
+<p>[14] Heidmann, F. (2013). Interaktive Karten und Geovisualisierungen. In W. Weber, M. Burmester, &amp; R. Tille (Eds.), Interaktive Infografiken (pp. 39–69). Berlin, Heidelberg: Springer Berlin Heidelberg.</p>
+<p>[15] Hey, A. (2011). AUTOMATED DOT MAPPING &#8211; HOW TO GENERATE DOT CLUSTERS (pp. 1–6). Presented at the Proceedings of the 22nd International Cartographic &#8230;.</p>
+<p>[16] Hochman, N., &amp; Manovich, L. (2013). Zooming into an Instagram City: Reading the local through social media. First Monday.</p>
+<p>[17] Kefaloukos, P. K., Vaz Salles, M., &amp; Zachariasen, M. (2012). TileHeat (1389023194 ed., pp. 349–358). Presented at the the 20th International Conference, New York, New York, USA: ACM Press. doi:10.1145/2424321.2424366</p>
+<p>[18] Kittur, A., Chi, E. H., &amp; Suh, B. (2008). Crowdsourcing user studies with Mechanical Turk (p. 453). Presented at the Proceeding of the twenty-sixth annual CHI conference, New York, New York, USA: ACM Press. doi:10.1145/1357054.1357127</p>
+<p>[19] Komninos, A., Besharat, J., Ferreira, D., &amp; Garofalakis, J. (2013). HotCity (pp. 1–10). Presented at the the 12th International Conference, New Y ork, New Y ork, USA: ACM doi:10.1145/2541831.2543694</p>
+<p>[20] Leaflet.(2014).Leaflet/Leaflet.markercluster. Press.</p>
+<p>[21] Mahe, L., &amp; Broadfoot, C. (2010, December). Too Many Markers! &#8211; Google Maps API — Google Developers. Retrieved March 2, 2014, from https://developers.google.com/maps/articles/toomanymarkers</p>
+<p>[22] Marks, J., &amp; Shieber, S. (1991). The Computational Complexity of Cartographic Label Placement, 1–28.</p>
+<p>[23] Microsoft Corporation. (2014). Bing Karten – Anfahrtsbeschreibungen, V erkehrsinfos und Straßenbedingungen. Retrieved from http://maps.bing.com</p>
+<p>[24] Paolacci, G., Chandler, J., &amp; Ipeirotis, P. G. (2010). Running Experiments on Amazon Mechanical Turk. Judgement and Decision Making, 5(5), 411–419. Retrieved from http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1626226</p>
+<p>[25] Ross, J., Irani, L., Silberman, M. S., Zaldivar, A., &amp; Tomlinson, B. (2010). Who are the crowdworkers? (pp. 2863–10). Presented at the the 28th of the international conference extended abstracts, New York, New York, USA: ACM Press. doi:10.1145/1753846.1753873</p>
+<p>[26] Sauro, J., &amp; Dumas, J. S. (2009). Comparison of three one-question, post-task usability questionnaires (pp. 1599–1608). Presented at the the SIGCHI Conference, New York, New York, USA: ACM Press. doi:10.1145/1518701.1518946</p>
+<p>[27] Shneiderman, B. (1996). The eyes have it: a task by data type taxonomy for information visualizations (pp. 336–343). Presented at the 1996 IEEE Symposium on Visual Languages, IEEE Comput. Soc. Press. doi:10.1109/VL.1996.545307</p>
+<p>[28] Stefanakis, E. (1996). CLUSTERING DYNAMIC MAP OBJECTS BASED ON DENSITY MEASURES, 1–6.</p>
+<p>[29] Woodruff, A., Landay, J., &amp; Stonebraker, M. (1998). Constant information density in zoomable interfaces. The Working Conference, 57–65. doi:10.1145/948496.948505</p>
+<p>[30] Yelp. (2014, March 10). Berlin Restaurants, Dentists, Bars, Beauty Salons, Doctors. Retrieved March 10, http://www.yelp.com/berlin</p>
+<hr class="project-end" /></div><div class="entry-content"><div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+
+	</div><!-- #page -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<p>
+			<a href="https://github.com/sebastian-meier">
+				<span class="genericon genericon-github"></span>
+			</a>
+			<a href="http://twitter.com/seb_meier">
+				<span class="genericon genericon-twitter"></span>
+			</a>
+			<a href="http://de.linkedin.com/in/sebastianmeier/">
+				<span class="genericon genericon-linkedin-alt"></span>
+			</a>
+			<a href="https://plus.google.com/u/0/+SebastianMeier84">
+				<span class="genericon genericon-googleplus"></span>
+			</a>
+		</p>
+		<p id="maptime">
+			<a href="http://www.meetup.com/maptime-ber/">
+				<img width="100" height="100" src="https:///wp-content/themes/seb/images/logo_mittel.png" />
+			</a>
+		</p>
+
+		<div class="site-info">
+			&copy; 2018 Sebastian Meier — <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a> — <a href="https://www.sebastianmeier.eu/impressum.html">Impressum / Legal Note</a> - <a href="https://www.sebastianmeier.eu/datenschutz.html">Datenschutz / Privacy Statement</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201738'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/functions.js?ver=20131209'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+</body>
+</html>		

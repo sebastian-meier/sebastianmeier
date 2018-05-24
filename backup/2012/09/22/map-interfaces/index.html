@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<base href="" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Map Interfaces | Sebastian Meier</title>
+    <link rel="shortcut icon" href="/wp-content/themes/seb/favicon.ico">
+	
+	
+	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/seb/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-bibtex-cite-plugin-styles-css'  href='/wp-content/plugins/wp-bibtex-cite/public/assets/css/public.css?ver=0.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/seb/style.css?ver=4.7.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='/wp-content/themes/seb/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=5.3' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/themes/seb/js/picturefill.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/wp-bibtex-cite/public/assets/js/public.js?ver=0.0.1'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/jquery.linewrap.1.0.min.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+
+ 
+
+<link rel='next' title='Realworld mobile Prototyping-Framework' href='/2012/10/14/realworld-mobile-prototyping-framework/' />
+
+<link rel="canonical" href="/2012/09/22/map-interfaces/" />
+<link rel='shortlink' href='/?p=102' />
+
+
+    <style type="text/css">
+        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
+    </style>
+    </head>
+
+<body class="post-template-default single single-post postid-102 single-format-standard masthead-fixed full-width singular">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<div class="site-title"><a href="/" rel="home">Sebastian Meier</a></div>
+						<div class="site-description"><a href="/" rel="home">Information Design &amp; Research</a></div>
+			
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<div class="menu-toggle">Primary Menu</div>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-390"><a title="Projects" href="/">Projects</a></li>
+<li id="menu-item-569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-569"><a href="/blog/">Blog</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="/cv/">CV</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-102" class="post-102 post type-post status-publish format-standard has-post-thumbnail hentry category-lectures-workshops">
+		<picture>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_map_interfaces.jpg" media="(min-width: 1000px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_map_interfaces-1000x266.jpg" media="(min-width: 700px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_map_interfaces-700x186.jpg" media="(min-width: 300px)">
+		<!--[if IE 9]></video><![endif]-->
+		<img width="1260" height="336" class="attachment-twentyfourteen-full-width wp-post-image" srcset="/wp-content/uploads/2014/07/wp_bg_map_interfaces-300x80.jpg" alt="Map Interfaces">
+	</picture>
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links">				<a>Lectures &amp; Workshops</a>
+			</span>
+		</div>
+		<h1 class="entry-title wrapper">Map Interfaces</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="/2012/09/22/map-interfaces/" rel="bookmark"><time class="entry-date" datetime="2012-09-22T10:03:04+00:00">September 22, 2012</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="/author/admin/" rel="author">Sebastian Meier</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>This lecture was given together with <a href="http://mphasize.de/">Marcus Paeschke</a> at the <a href="http://www.fh-potsdam.de/studieren/design/">Interface Design department</a> at the University for Applied Sciences Potsdam, in winter 2012.</p>
+<p>During the course of the term we looked at how maps have become ubiquitous interfaces integrated into many modern applications. Our students were asked to question the way we interact with maps and come up with new interactions and applications.</p>
+</div><div class="project-list-container"><h3 class="project-head">Student-Projects</h3>
+	  					<ul class="project-list">
+								      					<li class="project-list-id-227 project-list-type-image project-list-subtype-png">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/iphone5_screens_6.png" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/iphone5_screens_6-400x400.png" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/iphone5_screens_6-200x200.png" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">AD HOC</h4>
+								<div class="project-list-content-wrapper"><p><p>An app for intermodal routing, with integrated turn-by-turn navigation for your public transport transit. Integrating a new way for location and context based navigation.</p><p>Project by <a href="http://www.simonmartin.de/">Simon Martin</a>, <a href="https://incom.org/profil/3968">Jakob Flemming</a> and <a href="https://incom.org/profil/3946">Christoph Wiedenman</a><br /><a href="https://incom.org/projekt/3026">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-228 project-list-type-image project-list-subtype-png">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/design-1.png" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/design-1-400x340.png" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/design-1-200x170.png" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Armstrade</h4>
+								<div class="project-list-content-wrapper"><p><p>A data visualization using data from the <a href="http://www.sipri.org/">sipri</a> institues on the global armstrade. The project builds up on another <a href="http://incom.org/projekt/1877">university project</a> which used the dome to visualize the data. This project tries to bring the visualization to web and open it up for a bigger audience.</p><p>Project by <a href="https://incom.org/profil/3354">Daniel Grimm</a> | <a href="https://incom.org/projekt/3018">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-229 project-list-type-image project-list-subtype-png">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/img.png" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/img-400x301.png" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/img-200x150.png" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Berlin Wall</h4>
+								<div class="project-list-content-wrapper"><p><p>95% of the berlin wall is gone, thereby we have also lost access to memories, background stories and tragedies incorporated within the walls history. The app is trying to enable users to explore the history of the wall, the former locations or involved people.</p><p>Project by <a href="https://incom.org/profil/3965">Simon Staib</a> | <a href="https://incom.org/projekt/2995">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-230 project-list-type-image project-list-subtype-jpeg">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/5_prototyp.jpg" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/5_prototyp-400x258.jpg" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/5_prototyp-200x129.jpg" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">The man from Nazareth</h4>
+								<div class="project-list-content-wrapper"><p><p>This project is taking a critical point of view on miracles of jesus. The map is locating the miracles on an old and a modern map allowing the user to connect the two periods. Furthermore biblical and scientific informations on jesus miracles are presented.</p><p>Project by <a href="https://incom.org/profil/3283">Tom Haake</a> | <a href="http://mapinterfaces.github.io/Tom/gh-pages/">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-231 project-list-type-image project-list-subtype-jpeg">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/02_Geburt.jpg" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/02_Geburt-400x322.jpg" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/02_Geburt-200x161.jpg" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Memories</h4>
+								<div class="project-list-content-wrapper"><p><p>Memories is engaging with the commemoration of the victims of the National Socialism. The foundation for this project is the project "Stolpersteine" by the artist Gunter Demnig.</p><p>Project by <a href="https://incom.org/profil/1972">Lars Kreuzmann</a> and <a href="https://incom.org/profil/2637">Gerd-Hinnerk Winck</a><br /><a href="https://incom.org/projekt/3027">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-232 project-list-type-image project-list-subtype-png">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/analyze-2.png" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/analyze-2-400x316.png" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/analyze-2-200x158.png" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Snow Visualization</h4>
+								<div class="project-list-content-wrapper"><p><p>This project was realized in cooperation with <span style="color: #3b3b3b;">Abror Gafurov from the</span> <a href="http://www.gfz-potsdam.de/startseite/">GFZ</a> in Potsdam. The aim is to visualize the worldwide snow coverage. Allowing scientists and decision makers to visually explore the datasets.</p><p>Project by <a href="http://www.florianschulz.info/">Florian Schulz</a>, <a href="http://julianstahnke.com/">Julian Stahnke</a> and <a href="http://lionelmichel.fr/">Lionel Michel</a><br /><a href="https://incom.org/projekt/3038">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-234 project-list-type-image project-list-subtype-jpeg">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/sea-level-serowski_ruzsev_slides.jpg" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/sea-level-serowski_ruzsev_slides-400x300.jpg" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/sea-level-serowski_ruzsev_slides-200x150.jpg" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Sea Level Rise</h4>
+								<div class="project-list-content-wrapper"><p><p>The subject this project is the sea level rise (SLR) for the next 100 years. This global phenomenon is possibly affecting one tenth of the world population in the most densely populated areas. There is a lot of speculation about the extent and effects of sea level rise, since there aren't any widely accepted models.</p><p>Project by <a href="https://incom.org/profil/1971">Christina Serowski</a> and <a href="https://incom.org/profil/1316">Dimitar Roszenov Ruszev</a><br /><a href="https://incom.org/projekt/3199">Projectwebsite</a></p></p></div>
+							</li>
+								      					<li class="project-list-id-235 project-list-type-image project-list-subtype-png">
+								<a rel="lightbox[projectList]" href="/wp-content/uploads/2012/09/Photo-05.02.13-13-27-22.png" class="project-list-image">
+									<picture>
+										<!--[if IE 9]><video style="display: none;"><![endif]-->
+										<source srcset="/wp-content/uploads/2012/09/Photo-05.02.13-13-27-22-400x300.png" media="(min-width: 400px)">
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="/wp-content/uploads/2012/09/Photo-05.02.13-13-27-22-200x150.png" alt="Map Interfaces">
+									</picture>
+
+								</a>
+								<h4 class="small-wrapper">Segway Routing</h4>
+								<div class="project-list-content-wrapper"><p><p>Segway Routing is an iPad App, which is aiming at enabling touristic Segway companies to provide their clients with guideless city tours. The application gives its users the chance to create a tour themselves and be routed and guided through the city.</p><p>Project by <a href="http://www.cbernhardt.net/">Christian Bernhardt</a> and <a href="https://incom.org/profil/3941">André Kurfürst</a><br /><a href="https://incom.org/projekt/2996">Projectwebsite</a></p></p></div>
+							</li>
+													</ul>
+					<hr class="project-end" /></div><div class="entry-content"><div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+
+	</div><!-- #page -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<p>
+			<a href="https://github.com/sebastian-meier">
+				<span class="genericon genericon-github"></span>
+			</a>
+			<a href="http://twitter.com/seb_meier">
+				<span class="genericon genericon-twitter"></span>
+			</a>
+			<a href="http://de.linkedin.com/in/sebastianmeier/">
+				<span class="genericon genericon-linkedin-alt"></span>
+			</a>
+			<a href="https://plus.google.com/u/0/+SebastianMeier84">
+				<span class="genericon genericon-googleplus"></span>
+			</a>
+		</p>
+		<p id="maptime">
+			<a href="http://www.meetup.com/maptime-ber/">
+				<img width="100" height="100" src="https:///wp-content/themes/seb/images/logo_mittel.png" />
+			</a>
+		</p>
+
+		<div class="site-info">
+			&copy; 2018 Sebastian Meier — <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a> — <a href="https://www.sebastianmeier.eu/impressum.html">Impressum / Legal Note</a> - <a href="https://www.sebastianmeier.eu/datenschutz.html">Datenschutz / Privacy Statement</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201738'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/functions.js?ver=20131209'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+</body>
+</html>		

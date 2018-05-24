@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<base href="" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Heattile, a New Method for Heatmap Implementations for Mobile Web-based Cartographic Applications | Sebastian Meier</title>
+    <link rel="shortcut icon" href="/wp-content/themes/seb/favicon.ico">
+	
+	
+	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/seb/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-bibtex-cite-plugin-styles-css'  href='/wp-content/plugins/wp-bibtex-cite/public/assets/css/public.css?ver=0.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/seb/style.css?ver=4.7.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='/wp-content/themes/seb/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=5.3' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/themes/seb/js/picturefill.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/wp-bibtex-cite/public/assets/js/public.js?ver=0.0.1'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/jquery.linewrap.1.0.min.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+
+ 
+
+<link rel='next' title='Visualization &#038; Science Communication' href='/2014/06/06/visualization-science-communication/' />
+
+<link rel="canonical" href="/2014/06/01/heattile-a-new-method-for-heatmap-implementations-for-mobile-web-based-cartographic-applications/" />
+<link rel='shortlink' href='/?p=83' />
+
+
+    <style type="text/css">
+        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
+    </style>
+    </head>
+
+<body class="post-template-default single single-post postid-83 single-format-standard masthead-fixed full-width singular">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<div class="site-title"><a href="/" rel="home">Sebastian Meier</a></div>
+						<div class="site-description"><a href="/" rel="home">Information Design &amp; Research</a></div>
+			
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<div class="menu-toggle">Primary Menu</div>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-390"><a title="Projects" href="/">Projects</a></li>
+<li id="menu-item-569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-569"><a href="/blog/">Blog</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="/cv/">CV</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-83" class="post-83 post type-post status-publish format-standard has-post-thumbnail hentry category-publication">
+		<picture>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_heatmap.jpg" media="(min-width: 1000px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_heatmap-1000x266.jpg" media="(min-width: 700px)">
+		<source srcset="/wp-content/uploads/2014/07/wp_bg_heatmap-700x186.jpg" media="(min-width: 300px)">
+		<!--[if IE 9]></video><![endif]-->
+		<img width="1260" height="336" class="attachment-twentyfourteen-full-width wp-post-image" srcset="/wp-content/uploads/2014/07/wp_bg_heatmap-300x80.jpg" alt="Heattile, a New Method for Heatmap Implementations for Mobile Web-based Cartographic Applications">
+	</picture>
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links">				<a>Publication</a>
+			</span>
+		</div>
+		<h1 class="entry-title wrapper">Heattile, a New Method for Heatmap Implementations for Mobile Web-based Cartographic Applications</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="/2014/06/01/heattile-a-new-method-for-heatmap-implementations-for-mobile-web-based-cartographic-applications/" rel="bookmark"><time class="entry-date" datetime="2014-06-01T12:45:37+00:00">June 1, 2014</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="/author/admin/" rel="author">Sebastian Meier</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>This paper was published at the International Conference on Cartography and GIS 2014 (<a href="http://iccgis2014.cartography-gis.com">ICCGIS2014</a>). Authors: Sebastian Meier, Frank Heidmann,  Andreas Thom.<br />
+<a href="/wp-content/uploads/2014/06/heattile.pdf"><span class="genericon genericon-book">&nbsp;</span> Download Paper as PDF</a><br />
+<a href="https://github.com/sebastian-meier/HeatTiles"><span class="genericon genericon-github">&nbsp;</span> Source Code on GitHub</a></p>
+<h2>Abstract</h2>
+<p><em>Mobile handheld computing devices are becoming a more important part of our digital infrastructure. Web-based map services and visualisations for spatial data are being optimised for use on these new mobile devices. Despite the fast development of mobile devices, compared to laptop and desktop computers they remain slower in terms of processing power and have limited memory capac- ity. Bandwidth in most areas is still limited, regardless of the fast expansion of high-speed internet for mobile devices. To overcome these two limitations an im- provement in existing spatial data visualisations is necessary. This chapter com- pares existing methods and presents a new approach to generating and delivering web-based heat map visualisations for spatial data that is optimised for mobile de- vices.</em></p>
+<h2>1. Introduction</h2>
+<p>Heat maps, also known as density maps, density surfaces and shaded isarithmic maps, are usually used for visualising evenly distributed spatial data points with varying values (e.g. weather maps with varying temperatures) or spatial data-point clusters representing density (e.g. network-coverage-maps with one data point per antenna). With the help of heat maps a user can identify hotspots, distribution, and correlations within a spatial dataset (Pettit et al. 2012). Through further develop- ment of web technologies these visualisations have also become of interest for web-based geo-visualisations.</p>
+<p>Since the introduction of the iPhone and the beginning of the still growing smartphone segment, maps, or rather navigation, has been an essential part of the applications (apps) available. Today, there are numerous apps, map providers, navigation providers and many commercial and open source tools, which allow users and developers to bring maps to mobile devices. In addition to maps and navigation, geovisualisations (visualisations of spatial data), are also starting to appear on mobile devices. Although they have been present on the internet for years, the existing approaches to geovisualisations have to overcome a number of technological and conceptual obstacles until they can fully embrace the new mo- bile medium. This chapter concentrates on the heat map geovisualisation, and a new method to overcome the obstacles described above.</p>
+<h2>2. Existing Methods</h2>
+<p>The existing approaches to generating and delivering heat maps for web-based map systems can be categorised into two methods. The first method, referred to here as the client-side method, delivers raw spatial data, depending on the technol- ogy used, in JSON, XML, CSV or other similar formats, to the user’s browsers. The browser then transforms this data, using client-side technology such as JavaScript, into the actual heat maps (D3 2014, Heatmapjs 2014, Heatcanvas 2014, WebGL 2014, Google1 2014).</p>
+<p>The second method, referred to here as the tile-based method, involves pre- rendering the heat maps and then storing the visualisation data in tiled images on a server. The image-data is then delivered to the user’s browser in a standard tile- based system used by most common web map systems (CartoDB 2014, Nokia 2007).</p>
+<h2>3. Problem Definition</h2>
+<p>The existing approaches work very well in stationary browser applications and currently, in 2013, there are already various commercial and open source implementations of these methods. When we try to use the existing methods on mobile handheld web browsers, however, there are two major difficulties. One is the limited performance factor of mobile handheld devices. Even though the latest developments have turned what were not long ago still mostly text-input devices into small powerful computers, they are still not comparable to laptops or desktop computers. This limiting factor is a problem more relevant for the client-side method. Storing a large amount of data for real time use in the browser can be difficult on mobile devices and is limited, depending on the device. Rather seriously, this involves generating heat maps in real time, because this process is computationally intensive and also limited.</p>
+<p>The second major limitation is the bandwidth. Even with the implementation of the latest network technology the bandwidth in rural areas and densely populated areas is still limited. As a result, the tile-based method is problematic because the delivery of heat maps through the image data used by the tile-based method is very bandwidth intensive.<br />
+In addition to these two major limiting factors there are two additional factors involving the technological features of modern handheld devices. On the one hand, we have more and more high-resolution displays being built into modern devices. These high-resolution displays require the tile-based method to deliver even bigger images, making it even more bandwidth-intensive. On the other hand, multitouch displays and modern web-map systems allow a user to smoothly zoom in and out as well as interact with the data visualised on screen. While zooming is no problem for the tile-based method, further interaction is limited. In the client- side method interaction is possible, as is zooming, even though zooming can be very resource consuming.</p>
+<div class="page" title="Page 46">
+<div class="layoutArea">
+<div class="column">
+<p>Table 1: Comparison of existing heat map methods</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Tile-based Method</th>
+<th>Client-Side Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Computationally intensive</th>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>Bandwidth intensive</th>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<th>Interactivity</th>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>High-Resolution</th>
+<td>Yes, but requires more bandwidth intensive images</td>
+<td>Yes, Vector-Data</td>
+</tr>
+<tr>
+<th>Real time</th>
+<td>No, due to pre-rendering</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>As shown above, according to the comparison of existing approaches on mo- bile web browsers, a new method should have: 1. A small data footprint regarding bandwidth, 2. require as little client-side calculation as possible, as well as being 3. a high-resolution visualisation and it should also enable, 4. interaction with the visualised data itself.</p>
+<h2>4. The New Heattile Approach</h2>
+<p>The new approach consists of three steps. The first step is a raster-based clustering and generalising of the data, which is then rendered on a request-basis into Geo- JSONs (GeoJSON 2014), delivered to the browser and then visualised client-side for further interaction.</p>
+<h3>4.1 Server-Side Pre-Clustering</h3>
+<p>For the following steps we assume that the data is stored in a database. The sample queries are MySQL-Queries. The first step is clustering the spatial data. We use the tiling approach, which was initially introduced through the WMS Specification (Opengis1 2014) by the Open Geospatial Consortium (OGC 2014) in 2000. It be- came popular through modern map providers and their implementation of the Web Map Tile Service Implementation Standard (Opengis2 2014), such as that of Google (Google2 2014), Bing (Bing 2014), OpenStreetMap (OpenStreetMap 2014) and Mapbox (Mapbox1 2014). The tiling approach is using a web-Mercator projection, which results in an orthogonal and evenly distributed coordinate sys- tem (see Fig. 4.1 right). This coordinate system is then split into smaller squares, using a Quad-Tree-Method (Potmesil 1997), starting at one square at zoom-level x, four squares at zoom-level x+1, sixteen squares at zoom-level x+2 resulting in zoom-level x, tile number t = 2^((x-1)*2). In each zoom-level every square has a unique identifier. Starting at zero in the upper left corner, row after row, every column receives the consecutive number as an identifier (see Fig. 4.2).</p>
+<div id="attachment_151" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Coordinate-System-2.png" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Coordinate-System-2.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Coordinate-System-2-300x139.png" alt="Fig.1 Coordinate-system comparison" class="size-medium wp-image-151" width="700" height="325">
+</picture></a><p class="wp-caption-text">Fig.4.1 Coordinate-system comparison</p></div>
+<div id="attachment_154" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Coordinate-System-3.png" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Coordinate-System-3.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Coordinate-System-3-300x86.png" alt="Fig. 2 Tiling-System for Spatial Data" class="size-medium wp-image-154" width="700" height="201">
+</picture></a><p class="wp-caption-text">Fig. 4.2 Tiling-System for Spatial Data</p></div>
+<p>This process will be applied to our spatial data; every data point receives an id for every zoom-level, allowing us to receive all data points for a specific tile-id at a specific zoom-level through a very simple query. This technique is inspired by the hierarchical clustering process (Delort 2010).</p>
+<p><div id="attachment_157" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Coordinate-System-5.png" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Coordinate-System-5.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Coordinate-System-5-300x74.png" alt="Figure 3: Grouping Data-Points on a per-tile basis: Tile-ID per Zoom-level" class="size-medium wp-image-157" width="700" height="173">
+</picture></a><p class="wp-caption-text">Figure 3: Grouping Data-Points on a per-tile basis: Tile-ID per Zoom-level</p></div><br />
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59c20c122a7c1845990700" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+[SELECT GROUP(*), * FROM geo_data WHERE z_(ZOOM_ID) = (TILE_ID) GROUP BY z_(ZOOM_ID)]</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-59c20c122a7c1845990700-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59c20c122a7c1845990700-1"><span class="crayon-sy">[</span><span class="crayon-e">SELECT </span><span class="crayon-e">GROUP</span><span class="crayon-sy">(</span><span class="crayon-o">*</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-e">FROM </span><span class="crayon-e">geo_data </span><span class="crayon-e">WHERE </span><span class="crayon-e">z_</span><span class="crayon-sy">(</span><span class="crayon-v">ZOOM_ID</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">TILE_ID</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">GROUP </span><span class="crayon-e">BY </span><span class="crayon-e">z_</span><span class="crayon-sy">(</span><span class="crayon-v">ZOOM_ID</span><span class="crayon-sy">)</span><span class="crayon-sy">]</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0013 seconds] -->
+<br />
+After the initial conversion process, the same process of generating tile ids for spatial data points can be applied to new points whenever they are added without touching the already clustered data.</p>
+<h3>4.2 Server-Side GeoJSON</h3>
+<p>In order to keep a small data footprint, this method pre-clusters the data into the tiles generated in the step above. Instead of delivering all data points, the method only delivers a number of data points per tile. Instead of returning all tiles for the current zoom level, the method only returns the tiles for the currently visible area on the mobile device plus an additional margin around the requested area. The ex- tra margin gives the user smoother interaction when panning the “slippy map” (Slippy Map 2014). Using this approach, developers can decide how much data they want to deliver to the user’s device, either by shrinking or expanding the margin, and by defining the size of the tiles being displayed at each zoom-level.</p>
+<p>To keep the amount of rendering as small as possible, the method does not de- liver raw data that needs to be turned into a visualisation on the client’s side, but instead delivers GeoJSONs. The method delivers a range of GeoJSONs, which can be defined by the developer. In the example visualisations in Figures 4.4 and 4.5 we used an evenly distributed range from 0 to 9, 0 holding the tiles with the least data points and 9 the tiles with the most data points. For faster range- computation we recommend caching the maximum value of data points per tile for every zoom-level.</p>
+<p><div id="attachment_156" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Coordinate-System-4.png" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Coordinate-System-4.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Coordinate-System-4-300x83.png" alt="Fig. 4 Server-side rendered GeoJSON-Layers" class="size-medium wp-image-156" width="700" height="195">
+</picture></a><p class="wp-caption-text">Fig. 4.4 Server-side rendered GeoJSON-Layers</p></div><br />
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59c20c122a7d3651015235" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+[SELECT GROUP(*), * FROM geo_data WHERE z_(ZOOM_ID) = (TILE_ID) WHERE latitude &amp;lt; (LATITUDE_MAX+MARGIN) AND latitude &amp;gt; (LATITUDE_MIN-MARGIN) AND longitude &amp;lt; (LONGITUDE_MAX+MARGIN) AND longitude &amp;gt; (LONGITUDE_MIN- MARGIN) GROUP BY z_(ZOOM_ID)]</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-59c20c122a7d3651015235-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59c20c122a7d3651015235-1"><span class="crayon-sy">[</span><span class="crayon-e">SELECT </span><span class="crayon-e">GROUP</span><span class="crayon-sy">(</span><span class="crayon-o">*</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-e">FROM </span><span class="crayon-e">geo_data </span><span class="crayon-e">WHERE </span><span class="crayon-e">z_</span><span class="crayon-sy">(</span><span class="crayon-v">ZOOM_ID</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">TILE_ID</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">WHERE </span><span class="crayon-v">latitude</span><span class="crayon-h"> </span><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">LATITUDE_MAX</span><span class="crayon-o">+</span><span class="crayon-v">MARGIN</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">AND</span><span class="crayon-h"> </span><span class="crayon-v">latitude</span><span class="crayon-h"> </span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">LATITUDE_MIN</span><span class="crayon-o">-</span><span class="crayon-v">MARGIN</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">AND</span><span class="crayon-h"> </span><span class="crayon-v">longitude</span><span class="crayon-h"> </span><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">LONGITUDE_MAX</span><span class="crayon-o">+</span><span class="crayon-v">MARGIN</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">AND</span><span class="crayon-h"> </span><span class="crayon-v">longitude</span><span class="crayon-h"> </span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">LONGITUDE_MIN</span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-v">MARGIN</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">GROUP </span><span class="crayon-e">BY </span><span class="crayon-e">z_</span><span class="crayon-sy">(</span><span class="crayon-v">ZOOM_ID</span><span class="crayon-sy">)</span><span class="crayon-sy">]</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0026 seconds] -->
+</p>
+<h3>4.3 Client-Side Rendering &amp; Interaction</h3>
+<p>We used Leaflet (2014), a common web-mapping framework, in the user’s browser for displaying a map and requesting the GeoJSON-layer with the heat map for the currently visible area. On the client-side we can decide on visual features of the GeoJSON, manipulate those features, and add interactions for each range step (e.g. click or double-click). The colours can, for instance, be modified on the client: in the example below we used higher opacity for layers with higher density. The mono-colour theme was used instead of the common blue to red colour range for heat maps, as the mono-colour range performs better in geovisualisa- tions (Borland 2007, Harrower and Brewer 2003).</p>
+<div id="attachment_158" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/heatmaps.png" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/heatmaps.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/heatmaps-300x70.png" alt="Fig. 5 Three different heat map visualisations on top of maps" class="size-medium wp-image-158" width="700" height="163">
+</picture></a><p class="wp-caption-text">Fig. 4.5 Three different heat map visualisations on top of maps</p></div>
+<h3>5. Advantages and Disadvantages</h3>
+<p>The data footprint for the tiled GeoJSONs is very small (see Table 4.2), the processing-power required is little (see Table 4.2) and all processes can be done in real time. The GeoJSONs are visualised as vectors, which gives us high-resolution visualisations. Interaction in our method is limited; we can differentiate between interactions on the layers below the heat map and interactions on each range step, but what we cannot do is receive interactions on a specific tile, which would re- quire splitting the GeoJSON into one GeoJSON per tile, which would result in a higher data footprint as well as more processing. As a work-around we can trans- late the latitude and longitude values of the interaction into a tile-id and request further information from the server. Another disadvantage is the limitation in terms of visualisation styles. Due to the clustering method used, we are limited to square-based visualisations. For additional visualisations we have created a slightly altered method: every even row is offset by half the square size to the right, allowing us to create other types of visualisations, (Fig. 4.6).</p>
+<div id="attachment_159" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Figure_6.jpg" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Figure_6.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Figure_6-266x200.jpg" alt="Fig. 6 Alternative offset grid with hexagon heat map visualisation" class="size-full wp-image-159" width="700" height="525">
+</picture></a><p class="wp-caption-text">Fig. 4.6 Alternative offset grid with hexagon heat map visualisation</p></div>
+<h3>6. Comparison</h3>
+<p>It must be noted that the amount of data used influences the performance of the three methods. In this chapter we used datasets including from 200 to 200,000 data points for the central area of Berlin, for the testing described below (Table 4.2-4.4), and we used a subset of 14,864 data points. The testing device was an iPhone 5s.</p>
+<p>In a detailed comparison (Table 4.2) we can see that the GeoJSONs from our new method are smaller than in the other two data formats. For the image tiles,</p>
+<p>there is no information available for the uncompressed size as the tiles are com- pressed on the server. Execution time does not include loading time. The time for the raw data approach can be split into 20-30ms for parsing the data into the visu- alisation system and an additional 480-570ms for the rendering process. Parsing time is time required for JavaScript to go through the received JSON file and pass it on to the visualisation functions. The time for the raw data was calculated using the Heatcanvas (2014) library. The other libraries mentioned in Section 2 (D3 2014, Heatmapjs 2014, WebGLHeatmap 2014, Google1, 2014) were also tested, and we received varying results (all &gt;200ms) for the rendering time; the parsing time in all the libraries used was nearly the same (20ms-40ms).</p>
+<p>While the tile-based method is only limited by the capacity of the pre-rendering process and the new method is only limited by the performance of the database that holds the data, the performance of the client-side method, as described in Sec- tion 3, is extremely dependent on the size of the dataset. While performing well on very small datasets, the bigger the datasets become, the worse the performance (see Table 4.4), which at some point makes the client-side method unusable.</p>
+<p>Table 4.2 Filesize and execution time of GeoJSONs, varying in tile size, compared to image tiles and raw data for a 500x500px region</p>
+<table>
+<thead>
+<tr>
+<th>Size in Kilo-bytes</th>
+<th>GeoJSON (x)</th>
+<th>GeoJSON (x+1)</th>
+<th>GeoJSON (x+2)</th>
+<th>Image Tiles (lowres)</th>
+<th>Image Tiles (highres)</th>
+<th>Raw Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Size</th>
+<td>14,4</td>
+<td>35</td>
+<td>92,1</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>544</td>
+</tr>
+<tr>
+<th>Size GZIP-compressed</th>
+<td>1,3</td>
+<td>5,1</td>
+<td>13,5</td>
+<td>159,1</td>
+<td>430,7</td>
+<td>51,8</td>
+</tr>
+<tr>
+<th>Execution time in ms</th>
+<td>7-9</td>
+<td>8-10</td>
+<td>9-11</td>
+<td>10</td>
+<td>15</td>
+<td>20-30 (500-600)</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4.3 Comparison of the existing methods with the new method</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Heat Tile Method</th>
+<th>Tile-based-Method</th>
+<th>Client-Side-Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Computationally intensive Compare to Table 4.2</th>
+<td>Low</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>Bandwidth intensive Compare to Table 4.2</th>
+<td>Low</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<th>Interactivity</th>
+<td>Medium</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>High-resolution</th>
+<td>Yes, vector data</td>
+<td>Yes, but requires more bandwidth intensive images</td>
+<td>Yes, vector data</td>
+</tr>
+<tr>
+<th>Real time</th>
+<td>Yes</td>
+<td>No, due to prerendering</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4.4 Execution Time for the client-side method with raw data for a 500x500px region</p>
+<table>
+<tbody>
+<tr>
+<th>Data points</th>
+<td>14864</td>
+<td>29728</td>
+<td>44592</td>
+</tr>
+<tr>
+<th>Execution time in ms</th>
+<td>20-30 (500-600)</td>
+<td>44-50 (950-1050)</td>
+<td>65-80 (1430-1550)</td>
+</tr>
+</tbody>
+</table>
+<p>If we compare the new method with the existing methods, the new method per- forms better or equally as well in every category, except interactivity. The only disadvantage that remains is the variety in terms of visualisation and interaction.</p>
+<h3>7. Application and Future Works</h3>
+<p>There is a wide field of applications for the new method. In the MSNI research project (MSNI 2014), we used the method for displaying the density of different types of locations within a city (e.g. restaurants, bars, museums, etc.) which allows the user to explore a city while being on the road (similar attempts have been made by Nokia (2007)). In a similar use case researchers developed a visualisation for social-network data from foursquare to inform tourists about nearby locations and activities (Komminos et al. 2013). Another possible use case is the visualisa- tion of environmental data on mobile devices to allow users to explore their envi- ronment while on the move.</p>
+<p>To overcome the persistent obstacles we tried using the clustered data as raw data for existing JavaScript-based heat map libraries (Fig. 4.7). This resulted in even smaller data footprints, as we were able to strip the GeoJSON data and turn it into simple JSON (JSON2 2014) files. On the other hand it also resulted in more client-side processing, which slowed the visualisation.</p>
+<p>In the future we plan to apply new methods of shrinking the file-size of the GeoJSONs even further through compression (Hanov 2010, json.hpack 2014, JSON1 2014) or the BSON (2014) method. Additionally we need to look into caching systems for further optimisation and better scalability of our approach, similar to the techniques already used in the tile-based method (Liu et al. 2007).</p>
+<p>The latest work on vector-tiles, for example that by Google Maps (Google2 2014) or MapBox (MapBox2 2014), have improved the data footprint of the tile- based-approach. If the new vector method by Google and MapBox can be applied to the tile-based method for heat maps this could improve the limitation in terms of bandwidth, although it will not improve the ways a user can interact with the visualisations generated by this method.</p>
+<div id="attachment_160" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/Figure_7.jpg" data-rel="lightbox-gallery-r2KB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/Figure_7.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/Figure_7-266x200.jpg" alt="Fig. 4.7 Using the method to deliver clustered raw data for client-side heat map libraries" class="size-full wp-image-160" width="700" height="525">
+</picture></a><p class="wp-caption-text">Fig. 4.7 Using the method to deliver clustered raw data for client-side heat map libraries</p></div>
+<h3>8. Conclusion</h3>
+<p>The method described in this chapter presents a useful alternative to existing ap- proaches for visualising heat maps on mobile handheld devices. The new approach performs better in the major categories we identified as obstacles for geovisualisa- tions on mobile devices. The fact that the generation of heat maps can be done in real time is a particularly interesting new possibility for applications. The ap- proach also performs well in the other categories. The only downside is the variety of visual representations that it is possible to achieve, due to the raster-based clus- tering.</p>
+<p>The code required for using the method is available on GitHub under GPL/MIT: <a href="https://github.com/sebastian-meier/HeatTiles">https://github.com/sebastian-meier/HeatTiles</a>.</p>
+<h3>References</h3>
+<p>Bing (2014) http://maps.bing.com, Accessed: 10.01.2014</p>
+<p>Borland D, &amp; Taylor MR (2007) Rainbow color map (still) considered harmful. IEEE Comput Graph Applications, 27(2), 14-17. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/17388198, Accessed: 10.01.2014</p>
+<p>BSON (2014) BSON specification. http://bsonspec.org Accessed: 10.01.2014</p>
+<p>CartoDB. http://cartodb.com/visualise Accessed: 10.01.2014</p>
+<p>D3 (2014) D3 – Hexbinding. http://bl.ocks.org/mbostock/4330486 &amp; http://bl.ocks.org/mbostock/4248145 Accessed: 10.01.2014</p>
+<p>Delort JY (2010) Hierarchical cluster visualization in web mapping systems. In Proceedings of the 19th international conference on World wide web (WWW &#8217;10). ACM, New York, NY, USA, 1241-1244. DOI=10.1145/1772690.1772892</p>
+<p>GeoJSON (2014) http://www.geojson.org Accessed: 10.01.2014</p>
+<p>Google1 Heatmaps. https://developers.google.com/maps/documentation/javascript/examples/layer-heatmap, Ac- cessed: 10.01.2014</p>
+<p>Google2 (2014) Maps. http://maps.google.com, Accessed: 10.01.2014</p>
+<p>Hanov S (2010) Compress JSON with automatic type extraction. URL http://stevehanov.ca/ blog/index.php?id=104 Accessed: 10.01.2014</p>
+<p>Harrower M, Brewer CA (2003) ColorBrewer.org: An Online Tool for Selecting Colour Schemes for Maps. Cartographic Journal, 40(1), 27-37. doi:10.1179/000870403235002042</p>
+<p>Heatcanvas (2014) https://github.com/sunng87/heatcanvas Accessed: 10.01.2014</p>
+<p>Heatmapjs (2014) http://www.patrick-wied.at/static/heatmapjs/ Accessed: 10.01.2014</p>
+<p>JSON1 (2014) Compression Algorithms. http://web-resource- optimisation.blogspot.com/2011/06/json-compression-algorithms.html Accessed: 10.01.2014</p>
+<p>JSON2 (2014) http://json.org/ Accessed: 10.01.2014</p>
+<p>json.hpack (2014) https://github.com/WebReflection/json.hpack/wiki Accessed: 10.01.2014</p>
+<p>Komninos A, Besharat J, Ferreira D, Garofalakis J (2013) HotCity: enhancing ubiquitous maps with social context heatmaps. In Proceedings of the 12th International Conference on Mobile and Ubiquitous Multimedia (MUM &#8217;13). ACM, New York, NY, USA, , Article 52 , 10 pages. DOI=10.1145/2541831.2543694</p>
+<p>Leaflet (2014) http://www.leafletjs.com Accessed: 10.01.2014</p>
+<p>Liu Z, Pierce ME, Fox GC, Devadasan N. (2007) Implementing a caching and tiling map server: a Web 2.0 case study (pp. 247–256). Presented at the 2007 International Symposium on Col- laborative Technologies and Systems (CTS), IEEE. doi:10.1109/CTS.2007.4621762</p>
+<p>Mapbox (2014) http://www.mapbox.com Accessed: 10.01.2014</p>
+<p>Mapbox (2013) Vector Tiles for Mapbox Streets. https://www.mapbox.com/blog/vector-tiles, Accessed: 10.01.2014</p>
+<p>MSNI (2014) http://www.m-s-n-i.de, Accessed: 10.01.2014</p>
+<p>Nokia (2007) Identifying interesting locations based on commonalities in location based post- ings. http://www.google.com/patents?vid=USPATAPP11784086, Accessed: 10.01.2014</p>
+<p>Open Geospatial Consortium (2014) http://www.ogc.org Accessed: 10.01.2014</p>
+<p>Opengis1 (2014) Web map service (WMS) implementation specification. http://www. opengeo- spatial.org/standards/wms Accessed: 10.01.2014</p>
+<p>Opengis2 (2014) Web Map Tile Service Implementation Standard: http://www.opengeospatial.org/standards/wmts Accessed: 10.01.2014</p>
+<p>OpenStreetMap (2014) http://www.openstreetmap.org Accessed: 10.01.2014</p>
+<p>Pettit C, Widjaja I, Russo P, Sinnott R, Stimson R, Tomko M (2012) Visualisation support for exploring urban space and place. In XXII Congress of the International Society for Photo- grammetry and Remote Sensing, Melbourne, Australia</p>
+<p>Potmesil M, Bell Laboratories, Lucent Technologies (1997) Maps Alive: Viewing Geospatial In- formation on the WWW. Sixth International World Wide Web Conference. April 7-11, 1997 Santa Clara, California USA.</p>
+<p>Slippy Map (2014) http://wiki.openstreetmap.org/wiki/Slippy_Map Accessed: 10.01.2014 WebGLHeatmap (2014) http://ursudio.com/webgl-heatmap-leaflet/ Accessed: 10.01.2014</p>
+</div>
+</div>
+</div>
+<hr class="project-end" /></div><div class="entry-content"><div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+
+	</div><!-- #page -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<p>
+			<a href="https://github.com/sebastian-meier">
+				<span class="genericon genericon-github"></span>
+			</a>
+			<a href="http://twitter.com/seb_meier">
+				<span class="genericon genericon-twitter"></span>
+			</a>
+			<a href="http://de.linkedin.com/in/sebastianmeier/">
+				<span class="genericon genericon-linkedin-alt"></span>
+			</a>
+			<a href="https://plus.google.com/u/0/+SebastianMeier84">
+				<span class="genericon genericon-googleplus"></span>
+			</a>
+		</p>
+		<p id="maptime">
+			<a href="http://www.meetup.com/maptime-ber/">
+				<img width="100" height="100" src="https:///wp-content/themes/seb/images/logo_mittel.png" />
+			</a>
+		</p>
+
+		<div class="site-info">
+			&copy; 2018 Sebastian Meier — <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a> — <a href="https://www.sebastianmeier.eu/impressum.html">Impressum / Legal Note</a> - <a href="https://www.sebastianmeier.eu/datenschutz.html">Datenschutz / Privacy Statement</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201738'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/functions.js?ver=20131209'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+</body>
+</html>		

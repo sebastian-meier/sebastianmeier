@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<base href="" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>The Generative Marker Cluster — A more intuitive Solution to Marker Clusters | Sebastian Meier</title>
+    <link rel="shortcut icon" href="/wp-content/themes/seb/favicon.ico">
+	
+	
+	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/seb/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-bibtex-cite-plugin-styles-css'  href='/wp-content/plugins/wp-bibtex-cite/public/assets/css/public.css?ver=0.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/seb/style.css?ver=4.7.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='/wp-content/themes/seb/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=5.3' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/themes/seb/js/picturefill.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/wp-bibtex-cite/public/assets/js/public.js?ver=0.0.1'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/jquery.linewrap.1.0.min.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+
+ 
+
+<link rel='next' title='TnyTrbl' href='/2014/08/10/tnytrbl/' />
+
+<link rel="canonical" href="/2014/07/25/the-generative-marker-cluster-a-more-intuitive-solution-to-marker-clusters/" />
+<link rel='shortlink' href='/?p=88' />
+
+
+    <style type="text/css">
+        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
+    </style>
+    </head>
+
+<body class="post-template-default single single-post postid-88 single-format-standard masthead-fixed full-width singular">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<div class="site-title"><a href="/" rel="home">Sebastian Meier</a></div>
+						<div class="site-description"><a href="/" rel="home">Information Design &amp; Research</a></div>
+			
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<div class="menu-toggle">Primary Menu</div>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-390"><a title="Projects" href="/">Projects</a></li>
+<li id="menu-item-569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-569"><a href="/blog/">Blog</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="/cv/">CV</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-88" class="post-88 post type-post status-publish format-standard has-post-thumbnail hentry category-projects">
+		<picture>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		<source srcset="/wp-content/uploads/2014/11/wp_bg_trees.jpg" media="(min-width: 1000px)">
+		<source srcset="/wp-content/uploads/2014/11/wp_bg_trees-1000x266.jpg" media="(min-width: 700px)">
+		<source srcset="/wp-content/uploads/2014/11/wp_bg_trees-700x186.jpg" media="(min-width: 300px)">
+		<!--[if IE 9]></video><![endif]-->
+		<img width="1260" height="336" class="attachment-twentyfourteen-full-width wp-post-image" srcset="/wp-content/uploads/2014/11/wp_bg_trees-300x80.jpg" alt="The Generative Marker Cluster — A more intuitive Solution to Marker Clusters">
+	</picture>
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links">				<a>Projects</a>
+			</span>
+		</div>
+		<h1 class="entry-title wrapper">The Generative Marker Cluster — A more intuitive Solution to Marker Clusters</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="/2014/07/25/the-generative-marker-cluster-a-more-intuitive-solution-to-marker-clusters/" rel="bookmark"><time class="entry-date" datetime="2014-07-25T16:24:10+00:00">July 25, 2014</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="/author/admin/" rel="author">Sebastian Meier</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p><a href="https://github.com/sebastian-meier/generative_marker"><span class="genericon genericon-github">&nbsp;</span> Source Code on GitHub</a></p>
+<h2>ABSTRACT</h2>
+<p><em>With the growing amount of spatial data being gathered through users and services, a need for visualization methods to map these large spatial datasets onto web based maps arises. The most common technique for representing large datasets on maps is the marker cluster. However, by implementing marker clusters the data becomes more abstract for the viewer, since an additional abstraction layer, the clustering layer, is applied onto the visualization. To reduce the abstraction of marker clusters we propose the technique of generative markers to enhance the intuitiveness of the marker cluster method.</em></p>
+<p><strong>Keywords:</strong> Marker, spatial data, geovisualization, map, cluster, generative.</p>
+<p><strong>Index Terms:</strong> H.5.2 [Information Interfaces and Presentation]: Graphical user interfaces, Screen design, user-centered design; I.2.1 [Applications and Expert Systems]: Cartography</p>
+<p><iframe width="500" height="263" src="//player.vimeo.com/video/101340087" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></p>
+<h2>1. INTRODUCTION</h2>
+<p>The growing amount of data is a driving force for the development of new visualization methods. This also applies to the field of geovisualization and cartography. Experts have been working with large datasets since the introduction of computer aided Geographic Information Systems (GIS) in the late 1960s (Coppock &amp; Rhind, 2001). Mostly due to web- and neo-cartography, the field has also been moving into the field of non-expert applications, requiring new understandable visualization methods.<br />
+For the visualization of large spatial datasets, the marker cluster is already being used by many web-based applications. Yet, from a scientific point of view, most of the research on marker clusters is focusing on the more technical elements, like the algorithms generating the clusters (Bär &amp; Hurni, 2011; Delort, 2010; Kefaloukos, Vaz Salles, &amp; Zachariasen, 2012; Stefanakis, 2005). Research from a more user centered perspective is still missing.</p>
+<h2>2. STUDY</h2>
+<p>A study conducted by Meier and Heidmann compared a variety of marker cluster visualizations (Fig. 1), looking not only into effectiveness but also questioned if and how people were actually decoding marker clusters (Meier &amp; Heidmann, 2014). The results showed that participants find it very difficult to decode marker clusters. At the same time participants were trying to decode every visual information they received in order to make sense of the visualization, in regards to color for example: the color blue was interpreted as water related information, while green was interpreted as data related to nature. Similarly, numbers were decoded as rankings instead of as the number of clustered objects. Due to these findings we propose that new techniques should be developed that take the characteristics of the data into account and extend the existing visualizations in order to help users connect the visualization with the data beneath.</p>
+<div id="attachment_211" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/cluster_types.png" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/cluster_types.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/cluster_types-300x78.png" alt="Figure 1: 3 of 11 Cluster designs (Meier &amp; Heidmann, 2014)" class="size-full wp-image-211" width="480" height="125">
+</picture></a><p class="wp-caption-text">Figure 1: 3 of 11 Cluster designs (Meier &amp; Heidmann, 2014)</p></div>
+<h2>3. THE PROBLEM</h2>
+<p>The problem originates in the fact that the real world entity is being separated from the visualization by several layers of generalization and abstraction (Fig. 2). One of these layers of abstraction is the process of clustering and turning the data points into new visual objects. Most techniques use abstract visual variables like color and size to indicate differences in the number of data points being clustered in each cluster object (Fig. 3). In order to overcome this approach we propose to use visual representations that are more closely related to the data points’ meaning.</p>
+<div id="attachment_213" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/abstraction.png" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/abstraction.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/abstraction-300x73.png" alt="Figure 2: Abstraction: Real world location / marker / marker cluster" class="size-full wp-image-213" width="480" height="117">
+</picture></a><p class="wp-caption-text">Figure 2: Abstraction: Real world location / marker / marker cluster</p></div>
+<div id="attachment_215" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/visual_variable.png" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/visual_variable.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/visual_variable-300x101.png" alt="Figure 3: No visual variable / color / color and size" class="size-full wp-image-215" width="480" height="162">
+</picture></a><p class="wp-caption-text">Figure 3: No visual variable / color / color and size</p></div>
+<h2>4. THE GENERATIVE MARKER</h2>
+<p>The generative marker method is using the HTML5 canvas element to draw a marker image with javascript in realtime which is then turned into an image using the dataToUrl Method. This image can then be used as a marker image which can be extended to also draw a shadow onto the image and thereby imitate the existing marker images that people are already used to and at the same time achieve a higher contrast between map and marker.</p>
+<h2>5. IMPLEMENTATION</h2>
+<p>For this poster we have developed three sample cases. The first case uses data from the city of Berlin that indicates where new trees are going to be planted in the forthcoming year. We individually generate custom tree visualizations for every cluster object. One leaf represents one new tree (Fig. 4). The second case uses data regarding restaurants in the city of Berlin from the yelp, former qype, database. We combined a simple icon with the visual variables size and color, as well as a numeric indicator of the amount of clustered objects (Fig. 5). The third case uses data gathered from foursquare on restaurants serving burgers in the city of Berlin. Apart from the visual variable size we used three different icons to indicate an increase in number of clustered objects (Fig. 6).</p>
+<div id="attachment_216" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/trees.jpg" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/trees.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/trees-300x100.jpg" alt="Figure 4: Generative Marker Cluster for number of Trees" class="size-full wp-image-216" width="480" height="160">
+</picture></a><p class="wp-caption-text">Figure 4: Generative Marker Cluster for number of Trees</p></div>
+<div id="attachment_217" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/restaurants.jpg" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/restaurants.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/restaurants-300x100.jpg" alt="Figure 5: Generative Marker Cluster for number of Restaurants" class="size-full wp-image-217" width="480" height="160">
+</picture></a><p class="wp-caption-text">Figure 5: Generative Marker Cluster for number of Restaurants</p></div>
+<div id="attachment_218" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/burgers.jpg" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/burgers.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/burgers-300x100.jpg" alt="Figure 6: Generative Marker Cluster for number of Burger Bars" class="size-full wp-image-218" width="480" height="160">
+</picture></a><p class="wp-caption-text">Figure 6: Generative Marker Cluster for number of Burger Bars</p></div>
+<h2>6. RELATED WORK</h2>
+<p>The approach of combining the marker cluster with generative markers is inspired by existing marker cluster implementations like e.g. the visualization used by DriveNow (Fig. 7) which utilizes conventional markers that do not make use of abstract marker cluster objects, but instead provide a more self explaining image in combination with a text-layer, displaying the number of clustered data points.</p>
+<div id="attachment_219" style="width: 541px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/drivenow.png" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/drivenow.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/drivenow-300x95.png" alt="Figure 7: Marker Cluster Icon by DriveNow (“DriveNow,” 2014)" class="size-full wp-image-219" width="531" height="169">
+</picture></a><p class="wp-caption-text">Figure 7: Marker Cluster Icon by DriveNow (“DriveNow,” 2014)</p></div>
+<h2>7. FURTHER RESEARCH</h2>
+<p>In the implementation section we have shown three possible implementation scenarios. We are furthermore looking into using the method described in this paper in two other ways. On the one hand we are interested to see if it is also possible to use the method to generate more complex visualizations, taking more data dimensions into account than just the number of clustered data points. Therefore, we have build a first prototype that generates custom doughnut charts for each cluster marker. (Fig. 8 right) On the other hand we are also interested to see if the method can be used to foster more artistic and generative design approaches to the design of marker objects for marker clusters. A first prototype is generating custom markers based on the location data provided by the clustering technique (Fig. 8 left) Besides experimenting with the actual visualization techniques and optimizing the code for better performance, we would also like to build upon our first study and look deeper into the cognitive processes of decoding marker clusters and how this process can be optimized from a user centered design perspective.</p>
+<p><a href="/wp-content/uploads/2014/11/artistic.jpg" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/artistic.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/artistic-300x170.jpg" alt="Figure 8: Artistic- and Data-Vis-Marker" class="alignnone size-full wp-image-220" width="700" height="397">
+</picture></a></p>
+<div id="attachment_221" style="width: 490px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/11/statistics.jpg" data-rel="lightbox-gallery-LcFB" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/11/statistics.jpg" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/11/statistics-300x127.jpg" alt="Figure 8: Artistic- and Data-Vis-Marker" class="size-full wp-image-221" width="480" height="204">
+</picture></a><p class="wp-caption-text">Figure 8: Artistic- and Data-Vis-Marker</p></div>
+<h2>8. CONCLUSION</h2>
+<p>We concluded our work by repeating the experiment from study by Meier &amp; Heidmann (Meier &amp; Heidmann, 2014) with the tree visualization (Fig. 4), producing similar results in regards to efficiency, but better performance in regards to decoding. Probands identified the markers to be related to trees or nature. Even though we present an early stage prototype in our poster, we do not only see a wide range of possible applications but also the chance of contributing to the process of building more intuitive cluster or rather density visualizations.</p>
+<h2>9. ACKNOWLEDGEMENT</h2>
+<p>We would like to thank Ilmari Heikkinen for providing the free <a href="http://www.html5rocks.com/en/tutorials/canvas/imagefilters/">online tutorial</a> on how to use image filters on canvas drawn graphics, which we used to create the shadows.<br />
+Our code for the generative markers is available under the MIT license as an <a href="https://github.com/sebastian-meier/generative_marker%20">open source project on GitHub</a>.</p>
+<h2>REFERENCES</h2>
+<p>Bär, H. R., &amp; Hurni, L. (2011). Improved Density Estimation for the Visualisation of Literary Spaces. Cartographic Journal, the, 48(4)</p>
+<p>Coppock, J. T., &amp; Rhind, D. W. (2001). The History of GIS (Vol. 1, pp. 21–43).</p>
+<p>Delort, J.-Y. (2010). Hierarchical cluster visualization in web mapping systems (p. 1241). Presented at the the 19th international conference, New York, New York, USA: ACM Press.</p>
+<p>DriveNow. (2014). DriveNow. Retrieved May 18, 2014, from https://de.drive-now.com/</p>
+<p>Kefaloukos, P. K., Vaz Salles, M., &amp; Zachariasen, M. (2012). TileHeat (1389023194 ed., pp. 349–358). Presented at the the 20th International Conference, New York, New York, USA: ACM Press. doi:10.1145/2424321.2424366</p>
+<p>Meier, S., &amp; Heidmann, F. (2014). Too many Markers, revisited (pp. 1–5). Presented at the 2014 International Conference on Computational Science and its Applications.</p>
+<p>Stefanakis, E. (2005). Clustering Dynamic Map Objects Based on Density Measures. Presented at the Proceedings of the 22nd International Cartographic.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr class="project-end" /></div><div class="entry-content"><div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+
+	</div><!-- #page -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<p>
+			<a href="https://github.com/sebastian-meier">
+				<span class="genericon genericon-github"></span>
+			</a>
+			<a href="http://twitter.com/seb_meier">
+				<span class="genericon genericon-twitter"></span>
+			</a>
+			<a href="http://de.linkedin.com/in/sebastianmeier/">
+				<span class="genericon genericon-linkedin-alt"></span>
+			</a>
+			<a href="https://plus.google.com/u/0/+SebastianMeier84">
+				<span class="genericon genericon-googleplus"></span>
+			</a>
+		</p>
+		<p id="maptime">
+			<a href="http://www.meetup.com/maptime-ber/">
+				<img width="100" height="100" src="https:///wp-content/themes/seb/images/logo_mittel.png" />
+			</a>
+		</p>
+
+		<div class="site-info">
+			&copy; 2018 Sebastian Meier — <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a> — <a href="https://www.sebastianmeier.eu/impressum.html">Impressum / Legal Note</a> - <a href="https://www.sebastianmeier.eu/datenschutz.html">Datenschutz / Privacy Statement</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201738'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/functions.js?ver=20131209'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+</body>
+</html>		

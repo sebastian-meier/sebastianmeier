@@ -66,6 +66,13 @@
 		    <h3><span>Work</span></h3>
 		    <ul class="item-list">
 		        <li>
+		            <div class="tags"><span class="tag date">2017 - Now</span> — <span class="tag geo">Berlin, Germany</span></div>
+		            <div class="title">
+		                <h4><a href="http://lab.technologiestiftung-berlin.de">Technologiestiftung Berlin</a></h4>, <h5>Lead&nbsp;Data&nbsp;Scientist</h5>
+		            </div>
+		            <p>Founding of the Ideation &amp; Prototyping Lab, driving data-driven innovation to support citizens, local government and companies in Berlin&nbsp;…</p>
+		        </li>
+		        <li>
 		            <div class="tags"><span class="tag date">2008 - Now</span> — <span class="tag geo">Berlin, Germany</span></div>
 		            <div class="title">
 		                <h4><a href="http://www.vislab.io">VISLAB</a></h4>, <h5>Visualization Research &amp;&nbsp;Development</h5>
@@ -137,7 +144,7 @@
 		        <li>
 		            <div class="tags"><span class="tag date">2015 - 2015</span> — <span class="tag geo">London, UK</span></div>
 		            <div class="title">
-		                <h4>Visiting PhD</h4>, <h5>Computer Science, <a href="https://www.gicentre.net/">GiCentre</a></h5></div>
+		                <h4>Visiting PhD</h4>, <h5>Computer Science, <a href="https://www.gicentre.net/">GiCentre, City University</a></h5></div>
 		            <p>Working on Origin-Destination data, air pollution's impact on London's citizens and user studies for visualization prototypes. <a href="soonmore.html">Read&nbsp;more&nbsp;»</a></p>
 		        </li>
 		        <li>
@@ -160,7 +167,7 @@
 			<svg class="logo" width="40px" height="60px" viewBox="0 0 40 60"><g transform="translate(5 20)"><path d="M10 0L18.66 5L18.66 15L10 20L1.34 15L1.34 5Z"></path></g></svg>
 			Teaching: 2009 - 2017
 		</div>
-		<div class="content">
+		<div class="content expandable sec-teaching-content">
 		    <h3><span>Teaching</span></h3>
 		    <ul class="item-list">
 		        <li>
@@ -291,13 +298,18 @@
 		        </li>
 		    </ul>
 		</div>
+		<div class="expand">
+			<div class="inner">
+				<button class="sec-teaching-button" onclick="toggleSection('teaching');">+&nbsp;Expand</button>
+			</div>
+		</div>
 	</section>
 	<section id="sec-talks" class="section">
 		<div class="border white">
 			<svg class="logo" width="40px" height="60px" viewBox="0 0 40 60"><g transform="translate(5 20)"><path d="M10 0L18.66 5L18.66 15L10 20L1.34 15L1.34 5Z"></path></g></svg>
 			Talks: 2009 - 2017
 		</div>
-		<div class="content">
+		<div class="content expandable sec-talks-content">
 		    <h3><span>Talks</span></h3>
 		    <ul class="item-list">
 		        <li>
@@ -428,13 +440,18 @@
 		        </li>
 		    </ul>
 		</div>
+		<div class="expand">
+			<div class="inner">
+				<button class="sec-talks-button" onclick="toggleSection('talks');">+&nbsp;Expand</button>
+			</div>
+		</div>		
 	</section>
 	<section id="sec-publications" class="section">
 		<div class="border white">
 			<svg class="logo" width="40px" height="60px" viewBox="0 0 40 60"><g transform="translate(5 20)"><path d="M10 0L18.66 5L18.66 15L10 20L1.34 15L1.34 5Z"></path></g></svg>
 			Publications: 2009 - 2017
 		</div>
-		<div class="content">
+		<div class="content expandable sec-publications-content">
 		    <h3><span>Publications</span></h3>
 		    <ul class="item-list">
 		        <li>
@@ -546,17 +563,24 @@
 		            <div class="tags"><span class="tag date">2011</span> — <span class="tag type">Journalistic</span></div>
 		            <div class="title">
 		                <h5>Meier, S., </h5>
-		                <h4>Facebook — The role of the user in terms of privacy</h4></div>
+		                <h4>Facebook — The role of the user in terms of privacy</h4>
+		            </div>
 		            <p>Zeit-online</p>
 		        </li>
 		        <li>
 		            <div class="tags"><span class="tag date">2008</span> — <span class="tag type">Journal, Invited</span></div>
 		            <div class="title">
 		                <h5>Meier, S., </h5>
-		                <h4>Location based Applications (LBA)</h4></div>
+		                <h4>Location based Applications (LBA)</h4>
+		            </div>
 		            <p>Interfaces, Journal (UK), Issue 77</p>
 		        </li>
 		    </ul>
+		</div>
+		<div class="expand">
+			<div class="inner">
+				<button class="sec-publications-button" onclick="toggleSection('publications');">+&nbsp;Expand</button>
+			</div>
 		</div>
 	</section>
 	<section id="sec-activites" class="section">
@@ -615,5 +639,26 @@
 			<li><a href="#">XING</a></li>
 		</ul>
 	</footer>
+	<script type="text/javascript">
+		
+		function toggleSection(name){
+			var c = document.querySelector('.sec-' + name + '-content'),
+				b = document.querySelector('.sec-' + name + '-button');
+
+			var jumpToStart = false;
+
+			if(c.classList.contains('expanded')){
+				b.innerHTML = '+ Expand';
+				jumpToStart = true;
+			}else{
+				b.innerHTML = '- Close';
+			}
+			c.classList.toggle('expanded');
+			if(jumpToStart){
+				document.getElementById('sec-'+name).scrollIntoView();
+			}
+		}
+
+	</script>
 </body>
 </html>

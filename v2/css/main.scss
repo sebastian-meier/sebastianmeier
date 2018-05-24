@@ -137,6 +137,15 @@ header{
 
 .content{
 	margin-left:60px;
+	&.expandable{
+		display:block;
+		overflow:hidden;
+		max-height:250px;
+		&.expanded{
+			max-height:none;
+			margin-bottom:75px;
+		}
+	}
 }
 
 h1,h2{
@@ -186,6 +195,40 @@ section{
 		-webkit-column-break-inside: avoid;
 		page-break-inside: avoid;
 		break-inside: avoid;
+	}
+}
+
+.expand{
+	clear:both;
+	display:block;
+	position:relative;
+	float:left;
+	margin-top:-75px;
+	width:100%;
+	.inner{
+		margin-left:60px;
+		display:block;
+		padding-top:100px;
+		background-repeat:no-repeat;
+		background: linear-gradient(transparent, $bg);
+		background-size:auto 75px;
+		text-align:center;
+	}
+	button{
+		width:100px;
+		text-align:center;
+		cursor:pointer;
+		color:black;
+		padding:10px 15px;
+		border:2px solid black;
+		background:transparent;
+		font-weight:bold;
+		font-size:14px;
+		outline:none;
+		&:hover{
+			background:black;
+			color:$bg;
+		}
 	}
 }
 

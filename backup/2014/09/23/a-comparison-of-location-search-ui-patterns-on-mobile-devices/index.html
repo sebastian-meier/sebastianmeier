@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<base href="" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>A Comparison of Location Search UI Patterns on Mobile Devices | Sebastian Meier</title>
+    <link rel="shortcut icon" href="/wp-content/themes/seb/favicon.ico">
+	
+	
+	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/seb/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-bibtex-cite-plugin-styles-css'  href='/wp-content/plugins/wp-bibtex-cite/public/assets/css/public.css?ver=0.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/seb/style.css?ver=4.7.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='/wp-content/themes/seb/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=5.3' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/themes/seb/js/picturefill.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/wp-bibtex-cite/public/assets/js/public.js?ver=0.0.1'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/jquery.linewrap.1.0.min.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+
+ 
+
+<link rel='next' title='The Micro Smart Grid Tabletop' href='/2014/11/20/the-micro-smart-grid-tabletop/' />
+
+<link rel="canonical" href="/2014/09/23/a-comparison-of-location-search-ui-patterns-on-mobile-devices/" />
+<link rel='shortlink' href='/?p=85' />
+
+
+    <style type="text/css">
+        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
+    </style>
+    </head>
+
+<body class="post-template-default single single-post postid-85 single-format-standard masthead-fixed full-width singular">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<div class="site-title"><a href="/" rel="home">Sebastian Meier</a></div>
+						<div class="site-description"><a href="/" rel="home">Information Design &amp; Research</a></div>
+			
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<div class="menu-toggle">Primary Menu</div>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-390"><a title="Projects" href="/">Projects</a></li>
+<li id="menu-item-569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-569"><a href="/blog/">Blog</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="/cv/">CV</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-85" class="post-85 post type-post status-publish format-standard has-post-thumbnail hentry category-publication">
+		<picture>
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+		<source srcset="/wp-content/uploads/2014/07/ui-patterns.jpg" media="(min-width: 1000px)">
+		<source srcset="/wp-content/uploads/2014/07/ui-patterns-1000x266.jpg" media="(min-width: 700px)">
+		<source srcset="/wp-content/uploads/2014/07/ui-patterns-700x186.jpg" media="(min-width: 300px)">
+		<!--[if IE 9]></video><![endif]-->
+		<img width="1260" height="336" class="attachment-twentyfourteen-full-width wp-post-image" srcset="/wp-content/uploads/2014/07/ui-patterns-300x80.jpg" alt="A Comparison of Location Search UI Patterns on Mobile Devices">
+	</picture>
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links">				<a>Publication</a>
+			</span>
+		</div>
+		<h1 class="entry-title wrapper">A Comparison of Location Search UI Patterns on Mobile Devices</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="/2014/09/23/a-comparison-of-location-search-ui-patterns-on-mobile-devices/" rel="bookmark"><time class="entry-date" datetime="2014-09-23T19:15:52+00:00">September 23, 2014</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="/author/admin/" rel="author">Sebastian Meier</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>This poster was published at the Mobile HCI conference 2014.<br />
+<a href="/wp-content/uploads/2014/10/location_search_patterns_v7.pdf"><span class="genericon genericon-book"> </span> Download Paper as PDF</a></p>
+<h2>Abstract</h2>
+<p><em>This poster is looking at how users utilize mobile applications that offer an interface for finding locations and how the way of interaction changes depending on the users’ intent. Through the analysis of existing interfaces we identified 5 location search patterns. In a further evaluation of the existing patterns we tried to identify which patterns serve which users’ demand for information. In a goal directed pilot study we were able to gain a first insight into the correlations of specific user requirements and location search patterns.</em></p>
+<p><strong>Author Keywords</strong><br />
+Interface; Human Factors; Mobile; Design; Patterns</p>
+<p><strong>ACM Classification Keywords<br />
+</strong>H.1.2 Human Factors; H.5.2 User Interfaces</p>
+<p><strong>General Terms<br />
+</strong>Human Factors; Design</p>
+<h2>Introduction</h2>
+<p>Since the introduction of Apple’s AppStore, which was soon accompanied by Google’s PlayStore and other mobile app stores, navigational and location search applications (apps) have been an essential part of the apps offered. Those are apps that take the user’s current position into account and use this data for example to help users find locations. They can be categorized as Location Based Applications, or more general reactive Location Based Services (Küpper, 2005). When we use the term location in this poster we mean a physical location like a shop or restaurant. When we are talking about a geo-referenced position, like an address we name it geo-location, place or position.</p>
+<h2>Related Work</h2>
+<p>Even though this type of interaction: finding locations via mobile devices, plays an important role in user requirements today, as a current study underlines (Gutierrez, 2013), we don’t know much about how people use the variety of interfaces available within those apps. Most of the existing research in this field is focusing on the technological part of the process. For example on the optimization of location sensitive queries (Bouidghaghen, Tamine, &amp; Boughanem, 2011) or the prediction of clicks or rather choices (Lymberopoulos, Zhao, König, Berberich, &amp; Liu, 2011). Many of these projects are overlapping with research in the field of context aware applications. The research stronger related to HCI in this area is mostly looking at efficiency/clicks (Liu, Rau, Gao, 2010) or at specific interface elements (maps, lists, categories) (Iwata et al., 2010), but there is no research looking at the differences of the interfaces used in location search apps. To find out more about how users interact with those kinds of app interfaces we conducted a series of experiments.</p>
+<h2>Phase I – Extraction of Existing Patterns</h2>
+<p>In order to compare the existing interface elements we used the pattern methodology that is widely used in the HCI community (Borchers, 2000; Dearden &amp; Finlay, 2006; Folmer, Welie, &amp; Bosch, 2006; Granlund, Lafrenière, &amp; Carr, 2001) to document and categorize those elements. For this purpose we looked at a large set of mobile apps from Apple’s and Google’s app store. Even though the selected apps serve various purposes e.g. social networking, navigation, location searching, to name a few, we were able to identify similar interface patterns throughout the whole set of apps. Since the number of patterns didn’t increase even though we increased the number of examined apps, we will only discuss a subset of 8 apps (table 1).<br />
+We were able to extract 5 patterns from the analyzed apps. The five patterns search slot, categories, result-list, map and filters are not only used as standalone interface elements but also in combination, Google for example is using a combination of the search slot and filters.</p>
+<div id="attachment_198" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/patterns.png" data-rel="lightbox-gallery-qYtE" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/patterns.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/patterns-300x31.png" alt="5 ui patterns (Fig.1 - 5)" class="size-medium wp-image-198" width="700" height="73">
+</picture></a><p class="wp-caption-text">5 ui patterns (Fig.1 &#8211; 6)</p></div>
+<p>For the apps overview (table 1) we further categorized the used elements in first level and second level elements. First level interface elements are elements that are available for interaction when opening the app or when switching to the search screen. All elements that appear later or need further interaction to appear are second level elements. Some of the apps offer direct feedback via the result-list while changing the search parameters, other require a submit action to update the results. As our focus was lying on the search patterns, we only clustered the result-views in list- and map-patterns. The reason why we saw need for looking into the result-views in addition to the search patterns were the map-views. As we state later, the map view is a mixture of a result-view and a search element at the same time.</p>
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>Purpose</th>
+<th>iOS / Android</th>
+<th>First Level UI</th>
+<th>Second Level UI</th>
+<th>Result UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Foursquare</th>
+<td>Social Network, Location Finding</td>
+<td>yes/yes</td>
+<td>Map, Search</td>
+<td>Category</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Yelp/Qype</th>
+<td>Location Finding</td>
+<td>yes/yes</td>
+<td>Category, Search</td>
+<td>List</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Around Me</th>
+<td>Location Finding</td>
+<td>yes/yes</td>
+<td>Category, Search</td>
+<td>List</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>CityInfo</th>
+<td>Location Finding, City Tour</td>
+<td>yes/no</td>
+<td>List, Search</td>
+<td>Filter</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Urbany</th>
+<td>Location Finding</td>
+<td>yes/no</td>
+<td>Category, Search</td>
+<td>List</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Google Maps</th>
+<td>Navigation, Location Finding</td>
+<td>yes/yes</td>
+<td>Map, Search</td>
+<td>Category</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Google Local</th>
+<td>Location Finding</td>
+<td>yes/yes</td>
+<td>Category, Search</td>
+<td>List</td>
+<td>Map, List</td>
+</tr>
+<tr>
+<th>Facebook</th>
+<td>Social Network, Location Finding</td>
+<td>yes/yes</td>
+<td>Search</td>
+<td>List</td>
+<td>Map, List</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1. Selected Applications and their main purpose as well as the first and second level interface patterns</p>
+<h3>Search Slot</h3>
+<p>The most common search interface, the search slot, prominently used by Google, is the interface element that can be found in almost every location search app. The search slot is used to enter a search term (e.g. fast food, breakfast) in order to look up a specific location or look up a place. Some apps like the Google app are using one search slot for both location and place terms. Other apps differentiate between a slot for location search terms and one for place terms. While some apps just provide an enter- and submit-functionality, other apps have auto-complete features or direct feedback results implemented. Direct feedback means that while the user is typing, the results for the incomplete search term start appearing, for example as a list.</p>
+<h3>Categories</h3>
+<p>Categories are meta-data terms under which locations are grouped (e.g. restaurants, parks, etc.). Categories can be used in an exclusive or inclusive way. The interface elements for categories are usually used in two ways. On the one hand there are apps that use categories as a first level search interface to reveal locations from a specific category (e.g. AroundMe), on the other hand there are apps that use categories as filters to narrow down a search query from a search slot. Categories were found as vertical or horizontal lists (Fig. 2 &amp; 3). They were visualized as icons, text, or a combination of both. Beside the lists, dropdowns containing the categories were also found. Categories could be subsidized under filters, as they present a predefined list of a meta data values. We have created a distinguished pattern for categories, since in contrast to the other filters, categories appear as a first level UI element in many apps.</p>
+<h3>Map</h3>
+<p>While some apps offer maps only as a result-view, other apps also offer maps as a search interface (Fig. 4). Most popular foursquare is using the map as a first level UI element, presenting a visualization of the locations available nearby. Thereby, the map serves as an interface element that can change the area on which the search query is executed. By panning the map and through that changing the boundary-box of the area in focus, the search query is modified. Beside the manipulation of the search query the map can be used to select results.</p>
+<h3>Filters</h3>
+<p>Filters are second-level search interface elements. We use this term to summarize all filter interfaces apart from categories, as they are also used as first level UI elements. Filters are meta-data elements with the purpose of refining a search query. Depending on the app those filters can be ratings, opening hours, sub-categories or price, to name a few. The modification of the search query by using a filter is, depending on the app, exclusive or inclusive. Even though we will not discuss every possible meta data value that can be presented as a filter, we want to point out that there are two classes of filters we identified. On the one hand we have parameter filters, those are independent from each other. On the other hand we have sub-filters that belong to a parent filter. The simplest examples are sub-categories. The actual interface elements representing the filter vary throughout the apps, from sliders (Fig. 5) to dropdowns or checkbox-like-behavior. The full range of possibilities will not be discussed in this poster.</p>
+<h2>Phase II : Card Sorting</h2>
+<p>We started our experimental phase with a series of initial questionnaires with 14 tourists and locals, those gave us brief insights into what could be important in the process of finding locations. In order to construct a more solid hypothesis before we would be able to plan our study we conducted a cardsorting experiment with 10 participants. To this end we analyzed the patterns and translated them into search parameters, which could then be ranked according to the importance of finding a location. The parameters were distance, rating, opening times, price-range, accessibility and weather. Additionally, participants were asked to add parameters. Added parameters were distance to the next public transport and subcategories. Distance was ranked most important (table 2) followed by the information if the location is open and the rating.</p>
+<h3>Hypothesis</h3>
+<p>Combining the patterns we have identified in phase I, we formulate the hypothesis that for location search tasks that are conducted on an area nearby, users will more often use a map as a filter and search interface while in cases when the location is further away, users will more likely use the search slot.</p>
+<h2>Phase III : Experiment</h2>
+<p>For the experiment we developed a web-app that was connected to the Yelp/Qype API for data access. The subjects were given two tasks. The first task was to find a fastfood restaurant nearby their current position. The second task was finding a café for breakfast in a specific area further away. The app would indicate the completion of the task as soon as the participant would reach a location detail page holding the data of a location that would fit the task criteria. Every task started on a page consisting of a search slot, a map and a list of categories. From this starting point the user was just given the task, no further introduction.</p>
+<div id="attachment_199" style="width: 710px" class="wp-caption alignnone"><a href="/wp-content/uploads/2014/07/patterns-app.png" data-rel="lightbox-gallery-qYtE" title=""><picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="/wp-content/uploads/2014/07/patterns-app.png" media="(min-width: 300px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="/wp-content/uploads/2014/07/patterns-app-300x78.png" alt="Location search app" class="size-medium wp-image-199" width="700" height="182">
+</picture></a><p class="wp-caption-text">Fig. 7: Location search app</p></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Mean</th>
+<th>Median</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distance</td>
+<td>1,75</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Now Open</td>
+<td>2,25</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Rating</td>
+<td>3,375</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Price-range</td>
+<td>4,125</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Opening-Hours</td>
+<td>4,125</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Weather</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Accessible 6,375 6,5</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2. Card sorting results (Users ranked importance from 1 = important to 7 = unimportant).</p>
+<p>&nbsp;</p>
+<table>
+<thead>
+<tr>
+<th colspan="2"></th>
+<th>Overall</th>
+<th>Setup 1</th>
+<th>Setup 2</th>
+<th>Setup 3</th>
+<th>Setup 4</th>
+<th>Setup 5</th>
+<th>Setup 6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task 1</td>
+<td colspan="8">Entry point</td>
+</tr>
+<tr>
+<td></td>
+<td>Search slot</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Map</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>Category</td>
+<td>13</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Task 1</td>
+<td colspan="8">Problem solving entry</td>
+</tr>
+<tr>
+<td></td>
+<td>Search slot</td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>Map</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Category</td>
+<td>11</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Task 2</td>
+<td colspan="8">Entry point</td>
+</tr>
+<tr>
+<td></td>
+<td>Search slot</td>
+<td>14</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>Map</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Category</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Task 2</td>
+<td colspan="8">Problem solving entry</td>
+</tr>
+<tr>
+<td></td>
+<td>Search slot</td>
+<td>17</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>Map</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>Category</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3. Selected Applications and their main purpose as well as the first and second level interface patterns</p>
+<p>To interfere with the possibility that users might just click on the UI element that comes first we made sure that throughout the experiment the elements were equally distributed vertically. This means that all possible combinations (see Fig. 7) were shown to the user. Our main focus was lying on the entry point for each task as well as on how the user would complete the task. The interaction happening in-between was logged and analyzed but will not be discussed in this poster. For logging we observed our participants as well as using logging technology on the phone.</p>
+<h2>DISCUSSION</h2>
+<p>We tested more than 25 participants. After examining the data we had to dismiss 5 sets and came down to 20 valid datasets. As we can see in the results (table 3) the entry point for the first task was in 65% of the cases the categories. In regards to the map our hypothesis has proven wrong, we have to change it to categories: For searches on locations nearby, participants use the category interface. For the second task, the entry point is the search slot. In regards to solving the second task our second hypothesis is correct. An interesting effect that also needs more detailed observation is the fact that those participants who chose the map as an entry point for solving the second task still solved the task through the search slot in the end.</p>
+<h2>Conclusion</h2>
+<p>The study discussed above was only conducted on a small sample group, for further research this needs to be applied to a bigger sample. We only looked at two types of tasks, finding locations nearby and locations far away, in the future we would like to expand the testing on more diverse tasks. To further target the contextual and mobility factor of mobile devices, the experiment design should also be extended to include in-situ settings. The search for locations through mobile devices is a thriving field in the area of mobile applications. We were able to identify 5 UI patterns used in apps serving this purpose. Furthermore, we conducted a pilot study revealing that categories and the search slot are important first level UI elements when conducting a search and that the map as a first level UI, in our case, doesn’t lead to a successful conversion. The results from our experiments raise the question why maps are performing worse than the other two UI elements, or rather: what are the perceptual and cognitive differences between those two elements in regards to location search? The research conducted in this paper should provide other researchers with a starting point for looking into the behavior of users utilizing mobile apps for location search.</p>
+<h2>References</h2>
+<p>[1] Borchers, J. O. (2000). A pattern approach to interaction design (pp. 369–378). Presented at the the conference, New York, New York, USA: ACM Press.</p>
+<p>[2] Bouidghaghen, O., Tamine, L., &amp; Boughanem, M. (2011). Personalizing Mobile Web Search for Location Sensitive Queries. Audio, Transactions of the IRE Professional Group on, 1, 110–118.</p>
+<p>[3] Dearden, A., &amp; Finlay, J. (2006). Pattern languages in HCI: A critical review. Human-Computer Interaction, 21(1), 49–102.</p>
+<p>[4] Folmer, E., Welie, M. V., &amp; Bosch, J. (2006). Bridging patterns: An approach to bridge gaps between SE and HCI. Information and Software Technology, 48(2), 69–89.</p>
+<p>[5] Granlund, A., Lafrenière, D., &amp; Carr, D. A. (2001). A pattern-supported approach to the user interface design process. Presented at the Proceedings of HCI International.</p>
+<p>[6] Gutierrez, C. (2013). 6th Annual 15miles/Neustar Localeze Local Search Usage Study Conducted by comScore, 1–18.</p>
+<p>[7] Iwata, M., Hara, T., Shimatani, K., Mashita, T., Kiyokawa, K., Nishio, S., &amp; Takemura, H. (2010). A Location-based Content Search System Considering Situations of Mobile Users. Procedia Computer Science, 5, 426–433.</p>
+<p>[8] Küpper, A. (2005). Location-Based Services. John Wiley &amp; Sons.</p>
+<p>[9] Liu, Rau, Gao. (2010). Mobile information search for location-based information. Computers in Industry, 61(4), 8–8.</p>
+<p>[10] Lymberopoulos, D., Zhao, P., König, C., Berberich, K., &amp; Liu, J. (2011). Location-aware click prediction in mobile local search (pp. 413–422). Presented at the CIKM &#8217;11: Proceedings of the 20th ACM international conference on Information and knowledge management, New York, New York, USA.</p>
+<hr class="project-end" /></div><div class="entry-content"><div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>	</div><!-- .entry-content -->
+	
+	</article><!-- #post-## -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #main -->
+
+	</div><!-- #page -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<p>
+			<a href="https://github.com/sebastian-meier">
+				<span class="genericon genericon-github"></span>
+			</a>
+			<a href="http://twitter.com/seb_meier">
+				<span class="genericon genericon-twitter"></span>
+			</a>
+			<a href="http://de.linkedin.com/in/sebastianmeier/">
+				<span class="genericon genericon-linkedin-alt"></span>
+			</a>
+			<a href="https://plus.google.com/u/0/+SebastianMeier84">
+				<span class="genericon genericon-googleplus"></span>
+			</a>
+		</p>
+		<p id="maptime">
+			<a href="http://www.meetup.com/maptime-ber/">
+				<img width="100" height="100" src="https:///wp-content/themes/seb/images/logo_mittel.png" />
+			</a>
+		</p>
+
+		<div class="site-info">
+			&copy; 2018 Sebastian Meier — <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a> — <a href="https://www.sebastianmeier.eu/impressum.html">Impressum / Legal Note</a> - <a href="https://www.sebastianmeier.eu/datenschutz.html">Datenschutz / Privacy Statement</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201738'></script>
+<script type='text/javascript' src='/wp-content/themes/seb/js/functions.js?ver=20131209'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+</body>
+</html>		
