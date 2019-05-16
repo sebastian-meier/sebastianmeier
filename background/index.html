@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<style type="text/css">
+</style>
+<body>
+<svg width="2560" height="1920"></svg>
+<script>
+    
+    let points = [], edges = []
+
+    for(let i = 0; i<1000; i++){
+        points.push({
+            angle:Math.random()*Math.PI*2,
+            radius:Math.random()*700,
+            depth:Math.random()*100
+        })
+    }
+
+    points.sort((a,b)=>a.depth-b.depth)
+
+    let pX = d => d[1] * Math.cos(d[0]),
+        pY = d => d[1] * Math.sin(d[0]),
+        dist = d => Math.sqrt(Math.pow(d[1]-d[0], 2)+Math.pow(d[3]-d[2], 2))
+
+    while(edges.length<250){
+        let s = Math.round(Math.random()*points.length-1), 
+            e = Math.round(Math.random()*points.length-1)
+
+        if(s!=e && e in points && s in points && points[s].radius > 100 && points[e].radius > 100){
+            let distance = dist([pX([points[s].angle,points[s].radius]), pX([points[e].angle,points[e].radius]), pY([points[s].angle,points[s].radius]), pY([points[e].angle,points[e].radius])])
+
+            if(distance<150){
+                edges.push({
+                    source:s,
+                    target:e
+                })
+
+            }
+        }
+    }
+
+    let c1 = [160,190,213],
+        c2 = [236,246,255],
+        colorScale = d3.scaleLinear().domain([0,100]).range([`rgb(${c1[0]},${c1[1]},${c1[2]})`,`rgb(${c2[0]},${c2[1]},${c2[2]})`])
+
+    let color = d => colorScale(d.depth)
+    //d => `rgb(${255-d.depth*1.05},${255-d.depth*1.05},${255-d.depth*1.05})`
+
+    let svg = d3.select('svg'),
+        defs = svg.append('defs'),
+        g = svg.append('g').attr('transform','translate(400, 0) scale(2)')
+
+    let gradients = defs.selectAll('linearGradient').data(edges).enter().append('linearGradient')
+        .attr('gradientUnits','objectBoundingBox')
+        .attr('id', (d,i)=>'gradient-'+i)
+        .attr('x1','0%')
+        .attr('y1','0%')
+        .attr('x2','100%')
+        .attr('y2','0%')
+
+    gradients.append('stop').attr('offset','0%').attr('stop-color', d=>{
+        if(pX([points[d.source].angle,points[d.source].radius]) < pX([points[d.target].angle,points[d.target].radius])){
+            return color(points[d.source])
+        }
+        return color(points[d.target])
+    })
+    gradients.append('stop').attr('offset','100%').attr('stop-color', d=>{
+        if(pX([points[d.source].angle,points[d.source].radius]) < pX([points[d.target].angle,points[d.target].radius])){
+            return color(points[d.target])
+        }
+        return color(points[d.source])
+    })
+
+    let lines = g.selectAll('line').data(edges).enter().append('line')
+        .attr('x1', d=>pX([points[d.source].angle,points[d.source].radius]))
+        .attr('x2', d=>pX([points[d.target].angle,points[d.target].radius]))
+        .attr('y1', d=>pY([points[d.source].angle,points[d.source].radius]))
+        .attr('y2', d=>pY([points[d.target].angle,points[d.target].radius]))
+        .style('stroke', (d,i)=>`url(#gradient-${i})`)
+        .style('opacity', 1)
+
+    let circles = g.selectAll('circle').data(points).enter().append('circle')
+        .attr('cx', d=>pX([d.angle, d.radius]))
+        .attr('cy', d=>pY([d.angle, d.radius]))
+        .attr('r', d=>d.depth/7*(1-(d.radius/700))/2 + 2)
+        .attr('fill', color)
+        .style('opacity', 1)
+
+
+
+
+</script>
+</body>

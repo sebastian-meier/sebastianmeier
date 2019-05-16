@@ -1,24 +1,23 @@
 {
   "name": "sebastianmeier",
-  "version": "1.0.0",
-  "description": "",
-  "main": "builder.js",
+  "version": "2.0.0",
+  "description": "Personal Homepage",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jekyll": "bundle exec jekyll serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sebastian-meier/sebastianmeier.git"
   },
-  "author": "Sebastian Meier",
-  "license": "ISC",
+  "keywords": [
+    "jekyll"
+  ],
+  "author": "sebastian-meier @seb_meier",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/sebastian-meier/sebastianmeier/issues"
   },
-  "homepage": "https://github.com/sebastian-meier/sebastianmeier#readme",
-  "dependencies": {
-    "d3": "^4.7.4",
-    "fs": "0.0.1-security",
-    "jsdom": "^9.12.0"
-  }
+  "homepage": "https://github.com/sebastian-meier/sebastianmeier#readme"
 }

@@ -1,2 +1,0 @@
-- Build Generator 
-- Sample Page with education examples and a teaser image as a link
