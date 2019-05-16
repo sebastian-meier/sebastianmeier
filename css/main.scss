@@ -1,3 +1,6 @@
+---
+---
+
 /* roboto-condensed-regular - latin */
 @font-face {
   font-family: 'Roboto Condensed';
@@ -60,17 +63,22 @@ $bg : #fff; /*F4F2EE*/
 $dark : #464C50;
 $light : #727B82;
 
-body {
-	background-image:url('../background/background.svg');
+html{
+	background-color:#2691D5;
+}
+
+#wrapper {
+	background-color:#fff;
+	background-image:url('../background/background-min.svg');
 	background-repeat:no-repeat;
 	background-position:top left;
 	background-size:1280px 960px;
-  	box-sizing: border-box;
-  	font-family: 'Roboto Condensed', sans-serif;
+	box-sizing: border-box;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 *, ::before, ::after {
-  	box-sizing: inherit;
+  box-sizing: inherit;
 	margin:0;
 	padding:0;
 }
@@ -389,7 +397,12 @@ section{
 
 #sec-vis>div{
 	background-image:url("../images/Teaser_Vislab@2x.jpg");
-	background-size:auto 100%;
+	
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+	background-size: cover;
+	
 	background-position:center;
 	background-repeat:no-repeat;
 	max-width:926px;
@@ -475,6 +488,10 @@ section{
 			line-height:30px;
 			background-color:$bg;
 			padding-right:5px;
+			&.small-title{
+				font-size:18px;
+				font-weight:normal;
+			}
 		}
 		height:25px;
 		overflow:visible;
@@ -606,7 +623,7 @@ footer{
 	display:block;
 	padding: 50px 60px 0 60px;
 	color:#000;
-	border-bottom:5px solid #000;
+	border-bottom:5px solid #2691D5;
 }
 
 /*--- Responsive ---*/

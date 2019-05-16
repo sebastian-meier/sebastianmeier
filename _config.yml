@@ -1,3 +1,9 @@
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
 markdown: kramdown
 permalink: pretty
 
