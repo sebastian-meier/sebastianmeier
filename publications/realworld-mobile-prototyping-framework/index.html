@@ -1,0 +1,93 @@
+---
+title: Realworld Mobile Prototyping Framework
+description: A virtual mechanical turk approach for prototyping mobile location based services.
+layout: publication
+redirect_from: /2012/10/14/realworld-mobile-prototyping-framework/
+---
+
+		<h1>Realworld Mobile Prototyping Framework</h1>
+    
+    <dl>
+        <dt>Authors</dt>
+        <dd>Sebastian Meier, Johannes Landstorfer, Julia Werner, Prof. Reto Wettach, Andre Knörig, Jonathan Cohen — Interaction Design Studios (IxDS), Berlin, Andreas Sommerwerk — Creation Center, Deutsche Telekom AG, Berlin</dd>
+    </dl>
+
+    <dl>
+        <dt>Year</dt>
+        <dd>2012</dd>
+    </dl>
+
+    <dl>
+        <dt>Publication</dt>
+        <dd>Wireless Communication and Information (WCI) – Berlin</dd>
+    </dl>
+
+    <dl>
+        <dt>Download</dt>
+        <dd><a href="meier.pdf">PDF</a></dd>
+    </dl>
+
+		<h2>Abstract</h2>
+		<p>The increasing number of location-aware devices along with faster wireless communication technologies have led to more and more location-based services. But so far most of them do not take in-depth user preferences and context into account. In this paper we present a new framework, based on the „Wizard of Oz“ paradigm, for prototyping a mobile location-based and context based service in the real world. Simulating a complex application before the actual development phase enables a much earlier harvesting of feedback and insights which leads to a more focused product and a less expensive development cycle.</p>
+
+    <h2>1. Introduction</h2>
+		<p>In late 2011 the „Creation Center“ of Deutsche Telekom approached us to further develop and evaluate an idea for a new service which would be built around a complex algorithm that took into account a user‘s context and location. 1 No actual implementation of the algorithm existed at this point. Thus, our starting point was the question how to evaluate a non-existing contextual and location-based service.<br />Building an actual working service prototype was not within our time-frame or budget, as it required a huge dataset of locations and location-based information along with in-depth multi-dimensional user preferences, plus a set of undeveloped context-aware algorithms [<a href="#ML09">ML09</a>]. Prototyping often gives good results in a lab environment, but the only way to generate valid results for a contextual and location-based service is to essentially test it in the wild, in real contexts and in real locations [<a href="#KKC_05">KKC*05</a>, <a href="#KSA_09">KSA*09</a>, <a href="#RCT_07">RCT*07</a>, <a href="#NOP_06">NOP*06, <a href="#HRKS05">HRKS05</a>].</p>
+
+    <h2>2. Process</h2>
+		<p>Looking through a variety of methods and tools, we couldn‘t find a good fit for our requirements. So we turned to an approach based on the Wizard of Oz (WOZ) prototyping technique. „The WOZ paradigm utilizes a wizard (experimenter), behaving as an intelligent computer application, that interacts with a participant […]“ [<a href="#LCW_04">LCW*04</a>]. Originating in the field of natural language processing applications, the WOZ technique is an easy way to simulate an otherwise complex and often not yet existing technology [<a href="#GCH_83">GCH*83</a>]. Our obstacle of an intelligent contextual and location based service algorithm was unable to build within our time-frame, so we replaced the actual algorithm with our experimenters. Our process around the WOZ technique was split into three major steps.</p>
+
+    <h2>2.1 In-depth interviews</h2>
+    <p>To create a truly personalized service we needed profound knowledge about our test participants. Thus we started our process with in-depth interviews 1 This paper is focusing only on the framework used for testing the service. The service itself and insights gathered for Deutsche Telekom are confidential. with our recruited test participants to gain knowledge of their interests, likes, dislikes, lifestyle, behaviors, etc. With this background we were able to create very detailed profiles of each user, which would help us to aggregate and distribute the best matching recommendations and information in the working prototype.</p>
+    
+    <h2>2.2 Tracking and Feedback</h2>
+    <p>The next phase consisted of two weeks of tracking and feedback. The participants were tracked via GPS-enabled apps on their smartphones, allowing us to log the geographical parameters of their daily routines. This was combined with a feedback-application, which allowed the participants to give us audio, video, image and text feedback about their actions, as well as their needs and wishes at any time. The method of receiving feedback derived from other probe-methods [<a href="#GR08">GR08</a>, <a href="#GDP99">GDP99</a>], which provide rich feedback by creating easy-to-use feedback channels. The collected information about the participants‘ everyday lives was then combined with the results from the previous phase, creating not only insights into their favorite locations and everyday places, but helping us to chart their daily routines and behaviors, and to prepare location-based information and personalized recommendations.</p>
+    
+    <h2>2.3 Wizard of Oz</h2>
+    <p>In the third and final phase we built a mobile application to simulate a real contextual and location-based service. The application was developed using a cross-device-framework so that it ran on both iOS and Android devices. Three important features were the ability to load the application onto a participant‘s device without going through an app store, which saved time and allowed us to use experimental features. A framework for delivering push notifications to our participants from an app that cannot use the apple standardized push notifications and a framework for allowing our participants to send us video, audio, photo and text feedback.<br />We also wanted to be able to modify and update the application in the background without the user noticing or having to upgrade the application manually. This was important because the test was in an early prototyping phase and following our iterative development process, we wanted to be able to introduce updates based on our participants‘ feedback directly into the running system. To establish this feature, the native application which was installed on a participant‘s smartphone was only a simple display framework, the real application was a web app from our server, being loaded into the native application on startup. It was compiled from a database backbone filled-in by the experimenters with a standard HTML/Javascript/CSS frontend. By contrast, the experimenters, the Wizards of Oz, were using a hand-crafted dashboard application which provided information about each participant, for example behavior, preferences, and location. The dashboard also allowed the experimenter to see what the user was seeing on his smartphone in real-time, as well as to push new recommendations or other information to the user via the notification framework.</p>
+
+    <figure>
+      <img class="pub-img" src="WCI-Fig1_transparent.png" alt="Fig. 1: Technical test setup during the Wizard of Oz phase" />
+      <figcaption>Fig. 1: Technical test setup during the Wizard of Oz phase</figcaption>
+    </figure>
+
+    <p>To replace the non-existent algorithm for providing context- and locationbased information, we used a team of information-gathering-specialists. The team members used the insights from the in-depth interviews and the data from the feedback- and tracking-phase to gather useful information and push it at the right time to the specific user.<br /><br />The participants were able to rate this pushed information and give direct feedback about it, and the team members used this feedback to further finetune the service for each participant.</p>
+    <h2>2.4 Simplified example use case</h2>
+    <p>In the in-depth interviews the experimenter learned that the participant is vegetarian and has a medium income. In the tracking phase the experimenter got to know where the participant usually spent his lunch-times and what his favourite restaurants were. Based on those insights the experimenter could collect similar restaurants in the area that might fit the participants requirements. The recommendation would then be pushed to the participant‘s smartphone the next time the participant is in the area and it is time for lunch. After receiving the information the user would be able to give feedback on the recommendation and thus help the experimenter to refine future recommendations even more.</p>
+
+    <figure>
+      <img class="pub-img" src="WCI-Fig2_transparent.png" alt="Fig. 2: Information flow in example use case" />
+      <figcaption>Fig. 2: Information flow in example use case</figcaption>
+    </figure>
+
+    <h2>3. Experimental Setup</h2>
+    <p>The prototype for our qualitative study was tested with a group of 12 participants, equally split between men and women, covering ages from 25 to 49 years. Half of the participants experienced the service as described above, the other half was used as a control group, receiving no personalized but rather random push notifications and random recommendations, the received random information was only location- or time-based but not specifically customized for each participant. All participants participated in all three phases. The prototype was evaluated through the feedback delivered by the participants during the two last phases, the statistics generated by the mobile application itself, and an intensive post-workshop with six of the participants, conducted after completing the experiment.</p>
+    
+    <h2>4. Related Works</h2>
+    <p>Many papers show the advantage of testing mobile applications in real contexts [<a href="#KKC_05">KKC*05</a>, <a href="#KSA_09">KSA*09</a>, <a href="#RCT_07">RCT*07</a>, <a href="#NOP_06">NOP*06</a>, <a href="#HRKS05">HRKS05</a>]. Marco de Sá and Luís Carriço have even been working with a similar approach in their In-Situ Prototyping Tool [<a href="#SC09">SC09</a>]. Our method differentiates itself through the technique of splitting the app up into a native frame and a web app and by that the ability to modify the app on the fly in the background. Although the aim of our experiment, testing a location-based and contextual service and finally through our overall 3-phase experimental setup.</p>
+    
+    <h2>5. Conclusion</h2>
+    <p>We were able to produce unusually precise insights for our client regarding their service and business models, enabling them to confidently proceed with the further development of the service. The quality of the insights delivered to the client was partly due to the detailed feedback and tracking data along with the statistics gathered throughout the process, but was also due to the realistic set-up of the service.<br />
+    It even turned out that the „Wizard of Oz“ technique was sometimes too precise. The participants who received the „Wizard of Oz“ information perceived the service as backed by a powerful algorithm, not realizing that the data was actually produced by our team. When the information was too perfect, participants got suspicious. This response seemed to be similar to the „uncanny valley effect“ [Mor70] in which a machine is perceived as behaving eerily like a human. On the other hand this might also imply that personalization can indeed provide decent benefits but, besides all privacy questions, needs to be adjusted finely, because if the matching algorithm meets personal desires too precisely people feel insecure and spied upon. Clearly this finding needs more research.<br />
+    In regard to our iterative rapid prototyping approach, the choice to use a mobile web app framework for creating the application and the ability to change the application without the participants able to notice, enabled us to react in real-time to user feedback to change the application or fix bugs. The overall approach also proved to be cost-effective, meeting or exceeding needs throughout the development and testing process.<br />
+    But of course the method had its downsides and difficulties. Such a test can only be conducted for a small group of participants, as you need a lot of active “Wizards” to generate the content. Even though we found a good solution for loading the application onto our participants‘ devices, it wasn‘t completely perfect, especially in cases of inexperienced iOS participants we had to help install the application on their devices.<br />
+    We learned from the participants‘ feedback that speed was crucial to the overall perception of the app and the information within. This turned out to be problematic in cases of slow wireless networks or old smartphones. Similar findings regarding the acceptance of mobile applications can be found in corresponding literature [<a href="#MK09">MK09</a>, <a href="#VRP03">VRP03</a>].<br />
+    We had to work through a number of privacy issues, and there was a deep question about the balance between clarity and transparency on the one hand, for example making sure users understood and accepted that they would be geographically tracked, yet on the other hand not revealing our full experimental set-up using Wizard of Oz instead of a real algorithm.<br />
+    Overall we would highly recommend our user-centered approach in similar cases. Wherever a not yet existing complex mobile technology is setting the stage for an open question. Asking for a wide range of feedback. The „Wizard of Oz“ technique applied like in our setup can be very beneficial in the initial project phase for all follow-up processes of a project. Allowing more focused development in the subsequent production-steps.</p>
+    
+    <h2>References</h2>
+    <dl class="references">
+      <dt>[<a id="GCH83" name="GCH83">GCH83</a>]</dt><dd>John D. Gould, John Conti, and Todd Hovanyecz. 1983. Composing letters with a simulated listening typewriter. Commun. ACM 26, 4 (April 1983), 295-308.</dd>
+      <dt>[<a id="GDP99" name="GDP99">GDP99</a>]</dt><dd>Bill Gaver, Tony Dunne, and Elena Pacenti. 1999. Design: Cultural probes. interactions 6, 1 (January 1999), 21-29.</dd>
+      <dt>[<a id="GR08" name="GR08">GR08</a>]</dt><dd>Connor Graham and Mark Rouncefield. 2008. Probes and participation. In Proceedings of the Tenth Anniversary Conference on Participatory Design 2008 (PDC ‚08). Indiana University, Indianapolis, IN, USA, 194-197.</dd>
+      <dt>[<a id="HRKS05" name="HRKS05">HRKS05</a>]</dt><dd>Penny Hagen, Toni Robertson, Melanie Kan, and Kirsten Sadler. 2005. Emerging research methods for understanding mobile technology use. In Proceedings of the 17th Australia conference on Computer-Human Interaction: Citizens Online: Considerations for Today and the Future (OZCHI ‚05). Computer-Human Interaction Special Interest Group (CHISIG) of Australia, Narrabundah, Australia, Australia, 1-10.</dd>
+      <dt>[<a id="KKC_05" name="KKC_05">KKC*05</a>]</dt><dd>Anne Kaikkonen, Aki Kekäläinen, Mihael Cankar, Titti Kallio, and Anu Kankainen. 2005. Usability testing of mobile applications: a comparison between laboratory and field testing. Journal of Usability Studies, volume 1, number 1, pages 4-16.</dd>
+      <dt>[<a id="KSA_09" name="KSA_09">KSA*09</a>]</dt><dd>Kjeldskov, Mikael B. Skov, Benedikte S. Als, Rune Thaarup Høegh: Is It Worth the Hassle? Exploring the Added Value of Evaluating the Usability of Context-Aware Mobile Systems in the Field. Mobile HCI 2004: 61-73</dd>
+      <dt>[<a id="LCW_04" name="LCW_04">LCW*04</a>]</dt><dd>Lathrop, B., Cheng, H., Weng, F., Mishra, R., Chen, J., Bratt, H., Cavedon, L., Bergmann, C., Hand-Bender, T., Pon-Barry, H., Bei, B., Raya, M., Shriberg, L., 2004. A Wizard of Oz framework for collecting spoken human-computer dialogs: an experiment procedure for the design and testing of natural language in-vehicle technology systems. In: Proc. 12th Internat. Congress on Intelligent Transportation Systems, San Francisco CA, USA.</dd>    
+      <dt>[<a id="MK09" name="MK09">MK09</a>]</dt><dd>Arvind Malhotra and Claudia Kubowicz Malhotra. 2009. A relevancy- based services view for driving adoption of wireless web services in the U.S.. Commun. ACM 52, 7 (July 2009), 130-134.</dd>
+      <dt>[<a id="ML09" name="ML09">ML09</a>]</dt><dd>Mohamed F. Mokbel and Justin J. Levandoski. 2009. Toward context and preference-aware location-based services. In Proceedings of the Eighth ACM International Workshop on Data Engineering for Wireless and Mobile Access (MobiDE ‚09). ACM, New York, NY, USA, 25-32.</dd>
+      <dt>[<a id="Mor70" name="Mor70">Mor70</a>]</dt><dd>The Uncanny Valley, Masahiro Mori, 1970, Energy, 7(4), pp. 33-35. Translated by Karl F. MacDorman and Takashi Minato.</dd>
+      <dt>[<a id="NOP_06" name="NOP_06">NOP*06</a>]</dt><dd>Nielsen, C. M., Overgaard, M., Pedersen, M. B. , Stage, J., & Stenild, S. (2006). It’s Worth the Hassle!: The Added Value of Evaluating the Usability of Mobile Systems in the Field. In: Proceedings of the 4th Nordic conference on Human-computer interaction: changing roles. (pp. 272-280). Association for Computing Machinery. (ACM International Conference Proceeding Series; 189).</dd>
+      <dt>[<a id="RCT_07" name="RCT_07">RCT*07</a>]</dt><dd>Rogers, Kay Connelly, Lenore Tedesco, William Hazlewood, Andrew Kurtz, Robert E. Hall, Josh Hursey, and Tammy Toscos. 2007. Why it‘s worth the hassle: the value of in-situ studies when designing Ubicomp. In Proceedings of the 9th international conference on Ubiquitous computing (UbiComp ‚07), John Krumm, Gregory D. Abowd, Aruna Seneviratne, and Thomas Strang (Eds.). Springer-Verlag, Berlin, Heidelberg, 336-353.</dd>
+      <dt>[<a id="SC09" name="SC09">SC09</a>]</dt><dd>Marco de Sá and Luís Carriço. 2009. A mobile tool for in-situ prototyping. In Proceedings of the 11th International Conference on Human-Computer Interaction with Mobile Devices and Services (MobileHCI ‚09). ACM, New York, NY, USA, , Article 20 , 4 pages.</dd>
+      <dt>[<a id="VRP03" name="VRP03">VRP03</a>]</dt><dd>Viswanath Venkatesh, V. Ramesh, and Anne P. Massey. 2003. Understanding usability in mobile commerce. Commun. ACM 46, 12 (December 2003), 53-56.</dd>
+    </dl>

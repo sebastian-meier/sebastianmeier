@@ -1,0 +1,1 @@
+ Copyright 2019 Sebastian Meier, all rights reserved.

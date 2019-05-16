@@ -1,0 +1,298 @@
+---
+title: Location Search UI Patterns
+description: A Comparison of Location Search UI Patterns on Mobile Devices
+layout: publication
+redirect_from: /2014/09/23/a-comparison-of-location-search-ui-patterns-on-mobile-devices/
+---
+<h1>HeatTile</h1>
+<p class="pub-subline">A new method for HeatMap implementations for mobile-web-based cartographic applications.</p>
+
+<dl>
+    <dt>Author</dt>
+    <dd>Sebastian Meier, Frank Heidmann,  Andreas Thom</dd>
+</dl>
+
+<dl>
+    <dt>Year</dt>
+    <dd>2014</dd>
+</dl>
+
+<dl>
+    <dt>Publication</dt>
+    <dd>This paper was published at the International Conference on Cartography and GIS 2014 (ICCGIS2014).</dd>
+</dl>
+
+<dl>
+    <dt>Download</dt>
+    <dd><a href="heattile.pdf">PDF</a></dd>
+</dl>
+
+
+<h2>Abstract</h2>
+<p><em>Mobile handheld computing devices are becoming a more important part of our digital infrastructure. Web-based map services and visualisations for spatial data are being optimised for use on these new mobile devices. Despite the fast development of mobile devices, compared to laptop and desktop computers they remain slower in terms of processing power and have limited memory capac- ity. Bandwidth in most areas is still limited, regardless of the fast expansion of high-speed internet for mobile devices. To overcome these two limitations an im- provement in existing spatial data visualisations is necessary. This chapter com- pares existing methods and presents a new approach to generating and delivering web-based heat map visualisations for spatial data that is optimised for mobile de- vices.</em></p>
+
+<h2>1. Introduction</h2>
+<p>Heat maps, also known as density maps, density surfaces and shaded isarithmic maps, are usually used for visualising evenly distributed spatial data points with varying values (e.g. weather maps with varying temperatures) or spatial data-point clusters representing density (e.g. network-coverage-maps with one data point per antenna). With the help of heat maps a user can identify hotspots, distribution, and correlations within a spatial dataset (Pettit et al. 2012). Through further develop- ment of web technologies these visualisations have also become of interest for web-based geo-visualisations.</p>
+<p>Since the introduction of the iPhone and the beginning of the still growing smartphone segment, maps, or rather navigation, has been an essential part of the applications (apps) available. Today, there are numerous apps, map providers, navigation providers and many commercial and open source tools, which allow users and developers to bring maps to mobile devices. In addition to maps and navigation, geovisualisations (visualisations of spatial data), are also starting to appear on mobile devices. Although they have been present on the internet for years, the existing approaches to geovisualisations have to overcome a number of technological and conceptual obstacles until they can fully embrace the new mo- bile medium. This chapter concentrates on the heat map geovisualisation, and a new method to overcome the obstacles described above.</p>
+
+<h2>2. Existing Methods</h2>
+<p>The existing approaches to generating and delivering heat maps for web-based map systems can be categorised into two methods. The first method, referred to here as the client-side method, delivers raw spatial data, depending on the technol- ogy used, in JSON, XML, CSV or other similar formats, to the user’s browsers. The browser then transforms this data, using client-side technology such as JavaScript, into the actual heat maps (D3 2014, Heatmapjs 2014, Heatcanvas 2014, WebGL 2014, Google1 2014).</p>
+<p>The second method, referred to here as the tile-based method, involves pre- rendering the heat maps and then storing the visualisation data in tiled images on a server. The image-data is then delivered to the user’s browser in a standard tile- based system used by most common web map systems (CartoDB 2014, Nokia 2007).</p>
+
+<h2>3. Problem Definition</h2>
+<p>The existing approaches work very well in stationary browser applications and currently, in 2013, there are already various commercial and open source implementations of these methods. When we try to use the existing methods on mobile handheld web browsers, however, there are two major difficulties. One is the limited performance factor of mobile handheld devices. Even though the latest developments have turned what were not long ago still mostly text-input devices into small powerful computers, they are still not comparable to laptops or desktop computers. This limiting factor is a problem more relevant for the client-side method. Storing a large amount of data for real time use in the browser can be difficult on mobile devices and is limited, depending on the device. Rather seriously, this involves generating heat maps in real time, because this process is computationally intensive and also limited.</p>
+<p>The second major limitation is the bandwidth. Even with the implementation of the latest network technology the bandwidth in rural areas and densely populated areas is still limited. As a result, the tile-based method is problematic because the delivery of heat maps through the image data used by the tile-based method is&nbsp;very bandwidth intensive.<br>
+In addition to these two major limiting factors there are two additional factors&nbsp;involving the technological features of modern handheld devices. On the one hand, we have more and more high-resolution displays being built into modern devices. These high-resolution displays require the tile-based method to deliver even bigger images, making it even more bandwidth-intensive. On the other hand, multitouch displays and modern web-map systems allow a user to smoothly zoom in and out as well as interact with the data visualised on screen. While zooming is no problem for the tile-based method, further interaction is limited. In the client- side method interaction is possible, as is zooming, even though zooming can be very resource consuming.</p>
+
+<p>Table 1: Comparison of existing heat map methods</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Tile-based Method</th>
+<th>Client-Side Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Computationally intensive</th>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>Bandwidth intensive</th>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<th>Interactivity</th>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>High-Resolution</th>
+<td>Yes, but requires more bandwidth intensive images</td>
+<td>Yes, Vector-Data</td>
+</tr>
+<tr>
+<th>Real time</th>
+<td>No, due to pre-rendering</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+<p>As shown above, according to the comparison of existing approaches on mo- bile web browsers, a new method should have: 1. A small data footprint regarding bandwidth, 2. require as little client-side calculation as possible, as well as being 3. a high-resolution visualisation and it should also enable, 4. interaction with the visualised data itself.</p>
+
+<h2>4. The New Heattile Approach</h2>
+<p>The new approach consists of three steps. The first step is a raster-based clustering and generalising of the data, which is then rendered on a request-basis into Geo- JSONs (GeoJSON 2014), delivered to the browser and then visualised client-side for further interaction.</p>
+
+<h3>4.1 Server-Side Pre-Clustering</h3>
+<p>For the following steps we assume that the data is stored in a database. The sample&nbsp;queries are MySQL-Queries. The first step is clustering the spatial data. We use the tiling approach, which was initially introduced through the WMS Specification (Opengis1 2014) by the Open Geospatial Consortium (OGC 2014) in 2000. It be- came popular through modern map providers and their implementation of the Web Map Tile Service Implementation Standard (Opengis2 2014), such as that of Google (Google2 2014), Bing (Bing 2014), OpenStreetMap (OpenStreetMap 2014) and Mapbox (Mapbox1 2014). The tiling approach is using a web-Mercator projection, which results in an orthogonal and evenly distributed coordinate sys- tem (see Fig. 4.1 right). This coordinate system is then split into smaller squares, using a Quad-Tree-Method (Potmesil 1997), starting at one square at zoom-level x, four squares at zoom-level x+1, sixteen squares at zoom-level x+2 resulting in zoom-level x, tile number t = 2^((x-1)*2). In each zoom-level every square has a unique identifier. Starting at zero in the upper left corner, row after row, every column receives the consecutive number as an identifier (see Fig. 4.2).</p>
+
+<figure>
+    <img class="pub-img" src="Coordinate-System-2.png" alt="Fig. 1 Coordinate-system comparison" />
+    <figcaption>Fig. 1 Coordinate-system comparison</figcaption>
+</figure>
+
+<figure>
+    <img class="pub-img" src="Coordinate-System-3.png" alt="Fig. 2 Tiling-System for Spatial Data" />
+    <figcaption>Fig. 2 Tiling-System for Spatial Data</figcaption>
+</figure>
+
+<p>This process will be applied to our spatial data; every data point receives an id for every zoom-level, allowing us to receive all data points for a specific tile-id at a specific zoom-level through a very simple query. This technique is inspired by the hierarchical clustering process (Delort 2010).</p>
+
+<figure>
+    <img class="pub-img" src="Coordinate-System-5.png" alt="Fig. 3 Grouping Data-Points on a per-tile basis: Tile-ID per Zoom-level" />
+    <figcaption>Fig. 3 Grouping Data-Points on a per-tile basis: Tile-ID per Zoom-level</figcaption>
+</figure>
+
+<code>[SELECT GROUP(*), * FROM geo_data WHERE z_(ZOOM_ID) = (TILE_ID) GROUP BY z_(ZOOM_ID)]</code>
+
+<p>After the initial conversion process, the same process of generating tile ids for spatial data points can be applied to new points whenever they are added without touching the already clustered data.</p>
+
+<h3>4.2 Server-Side GeoJSON</h3>
+<p>In order to keep a small data footprint, this method pre-clusters the data into the tiles generated in the step above. Instead of delivering all data points, the method only delivers a number of data points per tile. Instead of returning all tiles for the current zoom level, the method only returns the tiles for the currently visible area on the mobile device plus an additional margin around the requested area. The ex- tra margin gives the user smoother interaction when panning the “slippy map” (Slippy Map 2014). Using this approach, developers can decide how much data they want to deliver to the user’s device, either by shrinking or expanding the margin, and by defining the size of the tiles being displayed at each zoom-level.</p>
+<p>To keep the amount of rendering as small as possible, the method does not de- liver raw data that needs to be turned into a visualisation on the client’s side, but instead delivers GeoJSONs. The method delivers a range of GeoJSONs, which can be defined by the developer. In the example visualisations in Figures 4.4 and 4.5 we used an evenly distributed range from 0 to 9, 0 holding the tiles with the least data points and 9 the tiles with the most data points. For faster range- computation we recommend caching the maximum value of data points per tile for every zoom-level.</p>
+
+<figure>
+    <img class="pub-img" src="Coordinate-System-4.png" alt="Fig. 4 Server-side rendered GeoJSON-Layers" />
+    <figcaption>Fig. 4 Server-side rendered GeoJSON-Layers</figcaption>
+</figure>
+
+<code>[SELECT GROUP(*), * FROM geo_data WHERE z_(ZOOM_ID) = (TILE_ID) WHERE latitude &lt; (LATITUDE_MAX+MARGIN) AND latitude &gt; (LATITUDE_MIN-MARGIN) AND longitude &lt; (LONGITUDE_MAX+MARGIN) AND longitude &gt; (LONGITUDE_MIN- MARGIN) GROUP BY z_(ZOOM_ID)]</code>
+
+<h3>4.3 Client-Side Rendering &amp; Interaction</h3>
+<p>We used Leaflet (2014), a common web-mapping framework, in the user’s browser for displaying a map and requesting the GeoJSON-layer with the heat map for the currently visible area. On the client-side we can decide on visual features of the GeoJSON, manipulate those features, and add interactions for each range step (e.g. click or double-click). The colours can, for instance, be modified on the client: in the example below we used higher opacity for layers with higher density. The mono-colour theme was used instead of the common blue to red colour range for heat maps, as the mono-colour range performs better in geovisualisa- tions (Borland 2007, Harrower and Brewer 2003).</p>
+
+<figure>
+    <img class="pub-img" src="heatmaps.png" alt="Fig. 5 Three&nbsp;different heat map visualisations on top of maps" />
+    <figcaption>Fig. 5 Three&nbsp;different heat map visualisations on top of maps</figcaption>
+</figure>
+
+<h3>5. Advantages and Disadvantages</h3>
+<p>The data footprint for the tiled GeoJSONs is very small (see Table 4.2), the processing-power required is little (see Table 4.2) and all processes can be done in real time. The GeoJSONs are visualised as vectors, which gives us high-resolution visualisations. Interaction in our method is limited; we can differentiate between interactions on the layers below the heat map and interactions on each range step, but what we cannot do is receive interactions on a specific tile, which would re- quire splitting the GeoJSON into one GeoJSON per tile, which would result in a higher data footprint as well as more processing. As a work-around we can trans- late the latitude and longitude values of the interaction into a tile-id and request further information from the server. Another disadvantage is the limitation in terms of visualisation styles. Due to the clustering method used, we are limited to square-based visualisations. For additional visualisations we have created a slightly altered method: every even row is offset by half the square size to the right, allowing us to create other types of visualisations, (Fig. 4.6).</p>
+
+<figure>
+    <img class="pub-img" src="Figure_6.jpg" alt="Fig. 6 Alternative offset grid with hexagon heat map visualisation" />
+    <figcaption>Fig. 6 Alternative offset grid with hexagon heat map visualisation</figcaption>
+</figure>
+
+<h3>6. Comparison</h3>
+<p>It must be noted that the amount of data used influences the performance of the three methods. In this chapter we used datasets including from 200 to 200,000 data points for the central area of Berlin, for the testing described below (Table 4.2-4.4), and we used a subset of 14,864 data points. The testing device was an iPhone 5s.</p>
+<p>In a detailed comparison (Table 4.2) we can see that the GeoJSONs from our new method are smaller than in the other two data formats. For the image tiles,</p>
+<p>there is no information available for the uncompressed size as the tiles are com- pressed on the server. Execution time does not include loading time. The time for the raw data approach can be split into 20-30ms for parsing the data into the visu- alisation system and an additional 480-570ms for the rendering process. Parsing time is time required for JavaScript to go through the received JSON file and pass it on to the visualisation functions. The time for the raw data was calculated using the Heatcanvas (2014) library. The other libraries mentioned in Section 2 (D3 2014, Heatmapjs 2014, WebGLHeatmap 2014, Google1, 2014) were also tested, and we received varying results (all &gt;200ms) for the rendering time; the parsing time in all the libraries used was nearly the same (20ms-40ms).</p>
+<p>While the tile-based method is only limited by the capacity of the pre-rendering process and the new method is only limited by the performance of the database that holds the data, the performance of the client-side method, as described in Sec- tion 3, is extremely dependent on the size of the dataset. While performing well on very small datasets, the bigger the datasets become, the worse the performance (see Table 4.4), which at some point makes the client-side method unusable.</p>
+<p>Table 4.2 Filesize and execution time of GeoJSONs, varying in tile size, compared to image tiles and raw data for a 500x500px region</p>
+
+<table>
+<thead>
+<tr>
+<th>Size in Kilo-bytes</th>
+<th>GeoJSON (x)</th>
+<th>GeoJSON (x+1)</th>
+<th>GeoJSON (x+2)</th>
+<th>Image Tiles (lowres)</th>
+<th>Image Tiles (highres)</th>
+<th>Raw Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Size</th>
+<td>14,4</td>
+<td>35</td>
+<td>92,1</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>544</td>
+</tr>
+<tr>
+<th>Size GZIP-compressed</th>
+<td>1,3</td>
+<td>5,1</td>
+<td>13,5</td>
+<td>159,1</td>
+<td>430,7</td>
+<td>51,8</td>
+</tr>
+<tr>
+<th>Execution time in ms</th>
+<td>7-9</td>
+<td>8-10</td>
+<td>9-11</td>
+<td>10</td>
+<td>15</td>
+<td>20-30 (500-600)</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4.3 Comparison of the existing methods with the new method</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Heat Tile Method</th>
+<th>Tile-based-Method</th>
+<th>Client-Side-Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Computationally intensive Compare to Table 4.2</th>
+<td>Low</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>Bandwidth intensive Compare to Table 4.2</th>
+<td>Low</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<th>Interactivity</th>
+<td>Medium</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<th>High-resolution</th>
+<td>Yes, vector data</td>
+<td>Yes, but requires more bandwidth intensive images</td>
+<td>Yes, vector data</td>
+</tr>
+<tr>
+<th>Real time</th>
+<td>Yes</td>
+<td>No, due to prerendering</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4.4 Execution Time for the client-side method with raw data for a 500x500px region</p>
+<table>
+<tbody>
+<tr>
+<th>Data points</th>
+<td>14864</td>
+<td>29728</td>
+<td>44592</td>
+</tr>
+<tr>
+<th>Execution time in ms</th>
+<td>20-30 (500-600)</td>
+<td>44-50 (950-1050)</td>
+<td>65-80 (1430-1550)</td>
+</tr>
+</tbody>
+</table>
+
+<p>If we compare the new method with the existing methods, the new method per- forms better or equally as well in every category, except interactivity. The only disadvantage that remains is the variety in terms of visualisation and interaction.</p>
+
+<h3>7. Application and Future Works</h3>
+<p>There is a wide field of applications for the new method. In the MSNI research project (MSNI 2014), we used the method for displaying the density of different types of locations within a city (e.g. restaurants, bars, museums, etc.) which allows the user to explore a city while being on the road (similar attempts have been made by Nokia (2007)). In a similar use case researchers developed a visualisation for social-network data from foursquare to inform tourists about nearby locations and activities (Komminos et al. 2013). Another possible use case is the visualisa- tion of environmental data on mobile devices to allow users to explore their envi- ronment while on the move.</p>
+<p>To overcome the persistent obstacles we tried using the clustered data as raw data for existing JavaScript-based heat map libraries (Fig. 4.7). This resulted in even smaller data footprints, as we were able to strip the GeoJSON data and turn it into simple JSON (JSON2 2014) files. On the other hand it also resulted in more client-side processing, which slowed the visualisation.</p>
+<p>In the future we plan to apply new methods of shrinking the file-size of the GeoJSONs even further through compression (Hanov 2010, json.hpack 2014, JSON1 2014) or the BSON (2014) method. Additionally we need to look into caching systems for further optimisation and better scalability of our approach, similar to the techniques already used in the tile-based method (Liu et al. 2007).</p>
+<p>The latest work on vector-tiles, for example that by Google Maps (Google2 2014) or MapBox (MapBox2 2014), have improved the data footprint of the tile- based-approach. If the new vector method by Google and MapBox can be applied to the tile-based method for heat maps this could improve the limitation in terms of bandwidth, although it will not improve the ways a user can interact with the visualisations generated by this method.</p>
+
+<figure>
+    <img class="pub-img" src="Figure_7.jpg" alt="Fig. 7 Using the method to deliver clustered raw data for client-side heat map libraries" />
+    <figcaption>Fig. 7 Using the method to deliver clustered raw data for client-side heat map libraries</figcaption>
+</figure>
+
+<h3>8. Conclusion</h3>
+<p>The method described in this chapter presents a useful alternative to existing ap- proaches for visualising heat maps on mobile handheld devices. The new approach performs better in the major categories we identified as obstacles for geovisualisa- tions on mobile devices. The fact that the generation of heat maps can be done in real time is a particularly interesting new possibility for applications. The ap- proach also performs well in the other categories. The only downside is the variety of visual representations that it is possible to achieve, due to the raster-based clus- tering.</p>
+<p>The code required for using the method is available on GitHub under GPL/MIT: <a href="https://github.com/sebastian-meier/HeatTiles" class=" cf--modified">https://github.com/sebastian-meier/HeatTiles</a>.</p>
+
+<h3>References</h3>
+<p>Bing (2014) http://maps.bing.com, Accessed: 10.01.2014</p>
+<p>Borland D, &amp; Taylor MR (2007) Rainbow color map (still) considered harmful. IEEE Comput Graph Applications, 27(2), 14-17. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/17388198, Accessed: 10.01.2014</p>
+<p>BSON (2014) BSON specification. http://bsonspec.org Accessed: 10.01.2014</p>
+<p>CartoDB. http://cartodb.com/visualise Accessed: 10.01.2014</p>
+<p>D3 (2014) D3 – Hexbinding. http://bl.ocks.org/mbostock/4330486 &amp; http://bl.ocks.org/mbostock/4248145 Accessed: 10.01.2014</p>
+<p>Delort JY (2010) Hierarchical cluster visualization in web mapping systems. In Proceedings of the 19th international conference on World wide web (WWW ’10). ACM, New York, NY, USA, 1241-1244. DOI=10.1145/1772690.1772892</p>
+<p>GeoJSON (2014) http://www.geojson.org Accessed: 10.01.2014</p>
+<p>Google1 Heatmaps. https://developers.google.com/maps/documentation/javascript/examples/layer-heatmap, Ac- cessed: 10.01.2014</p>
+<p>Google2 (2014) Maps. http://maps.google.com, Accessed: 10.01.2014</p>
+<p>Hanov S (2010) Compress JSON with automatic type extraction. URL http://stevehanov.ca/ blog/index.php?id=104 Accessed: 10.01.2014</p>
+<p>Harrower M, Brewer CA (2003) ColorBrewer.org: An Online Tool for Selecting Colour Schemes for Maps. Cartographic Journal, 40(1), 27-37. doi:10.1179/000870403235002042</p>
+<p>Heatcanvas (2014) https://github.com/sunng87/heatcanvas Accessed: 10.01.2014</p>
+<p>Heatmapjs (2014) http://www.patrick-wied.at/static/heatmapjs/ Accessed: 10.01.2014</p>
+<p>JSON1 (2014) Compression Algorithms. http://web-resource- optimisation.blogspot.com/2011/06/json-compression-algorithms.html Accessed: 10.01.2014</p>
+<p>JSON2 (2014) http://json.org/ Accessed: 10.01.2014</p>
+<p>json.hpack (2014) https://github.com/WebReflection/json.hpack/wiki Accessed: 10.01.2014</p>
+<p>Komninos A, Besharat J, Ferreira D, Garofalakis J (2013) HotCity: enhancing ubiquitous maps with social context heatmaps. In Proceedings of the 12th International Conference on Mobile and Ubiquitous Multimedia (MUM ’13). ACM, New York, NY, USA, , Article 52 , 10 pages. DOI=10.1145/2541831.2543694</p>
+<p>Leaflet (2014) http://www.leafletjs.com Accessed: 10.01.2014</p>
+<p>Liu Z, Pierce ME, Fox GC, Devadasan N. (2007) Implementing a caching and tiling map server: a Web 2.0 case study (pp. 247–256). Presented at the 2007 International Symposium on Col- laborative Technologies and Systems (CTS), IEEE. doi:10.1109/CTS.2007.4621762</p>
+<p>Mapbox (2014) http://www.mapbox.com Accessed: 10.01.2014</p>
+<p>Mapbox (2013) Vector Tiles for Mapbox Streets. https://www.mapbox.com/blog/vector-tiles, Accessed: 10.01.2014</p>
+<p>MSNI (2014) http://www.m-s-n-i.de, Accessed: 10.01.2014</p>
+<p>Nokia (2007) Identifying interesting locations based on commonalities in location based post- ings. http://www.google.com/patents?vid=USPATAPP11784086, Accessed: 10.01.2014</p>
+<p>Open Geospatial Consortium (2014) http://www.ogc.org Accessed: 10.01.2014</p>
+<p>Opengis1 (2014) Web map service (WMS) implementation specification. http://www. opengeo- spatial.org/standards/wms Accessed: 10.01.2014</p>
+<p>Opengis2 (2014) Web Map Tile Service Implementation Standard: http://www.opengeospatial.org/standards/wmts Accessed: 10.01.2014</p>
+<p>OpenStreetMap (2014) http://www.openstreetmap.org Accessed: 10.01.2014</p>
+<p>Pettit C, Widjaja I, Russo P, Sinnott R, Stimson R, Tomko M (2012) Visualisation support for exploring urban space and place. In XXII Congress of the International Society for Photo- grammetry and Remote Sensing, Melbourne, Australia</p>
+<p>Potmesil M, Bell Laboratories, Lucent Technologies (1997) Maps Alive: Viewing Geospatial In- formation on the WWW. Sixth International World Wide Web Conference. April 7-11, 1997 Santa Clara, California USA.</p>
+<p>Slippy Map (2014) http://wiki.openstreetmap.org/wiki/Slippy_Map Accessed: 10.01.2014 WebGLHeatmap (2014) http://ursudio.com/webgl-heatmap-leaflet/ Accessed: 10.01.2014</p>

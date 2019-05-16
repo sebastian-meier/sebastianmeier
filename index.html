@@ -1,0 +1,221 @@
+---
+layout: index
+redirect_from:
+  - "/2009/03/08/university-finder/"
+  - "/2009/07/14/universities-in-the-digital-age/"
+  - "/2010/07/06/facebook-leichtsinn-der-nutzer-ist-die-groste-lucke/"
+  - "/2010/10/15/beyond-processing-into-space/"
+  - "/2010/11/05/generative-gestaltung/"
+  - "/2011/03/14/news-in-the-digital-age/"
+  - "/2011/07/14/lit-map-based-literary-research/"
+  - "/2011/09/09/interface-metaphor/"
+  - "/2012/08/05/virtual-center-ixds-fhk/"
+  - "/2012/09/22/map-interfaces/"
+  - "/2013/03/22/dataviz-challenges/"
+  - "/2013/09/22/tnytrbl-minis-i/"
+  - "/2013/10/11/tnytrbl-minis-ii/"
+  - "/2013/11/23/katwarn/"
+  - "/2013/12/05/visual-information-exploration/"
+  - "/2014/01/25/msni-exploring-the-unknown/"
+  - "/2014/06/06/visualization-science-communication/"
+  - "/2014/06/21/deutsche-national-bibliothek-data-explorer/"
+  - "/2014/07/12/google-maps-and-beyond-karten-fur-desktop-mobile-und-print/"
+  - "/2014/07/25/the-generative-marker-cluster-a-more-intuitive-solution-to-marker-clusters/"
+  - "/2014/08/10/tnytrbl/"
+  - "/2014/08/10/tnytrbl-2/"
+  - "/2014/08/21/tnytrbl-3/"
+  - "/2014/08/31/vislab-io-surface-animation/"
+  - "/2015/02/18/revisiting-bertins-vertical-sections/"
+  - "/2015/05/15/responsive-visualizations/"
+  - "/2015/11/02/od-layouts/"
+  - "/2015/11/02/space-filling-geographic-treemap-layouts/"
+  - "/2015/12/22/exploring-instagrams-spatial-tag-distribution/"
+  - "/_downloads.html"
+  - "/author/admin/"
+  - "/author/admin/page/2/"
+  - "/author/admin/page/3/"
+  - "/author/admin/page/4/"
+  - "/blog/"
+  - "/blog/page/2/"
+  - "/cv/"
+---
+  <section id="sec-vis">
+		<div>
+			<img src="{{ "/images/logo_highres.png" | absolute_url }}" alt="VISLAB.io" />
+			<p>Explore my recent work, experiments and research on VISLAB.io</p>
+			<a href="http://www.vislab.io">Explore now &raquo;</a>
+		</div>
+	</section>
+	<section id="sec-nav">
+		<div>
+			<h3>Curriculum Vitae</h3>
+			<ul class="nav-list">
+				<li><img src="./images/ico_work.svg" alt="1." /><a href="#sec-work">Work</a></li>
+				<li><img src="./images/ico_education.svg" alt="2." /><a href="#sec-education">Education</a></li>
+				<li><img src="./images/ico_teaching.svg" alt="3." /><a href="#sec-teaching">Teaching</a></li>
+				<li><img src="./images/ico_talks.svg" alt="4." /><a href="#sec-talks">Talks</a></li>
+				<li><img src="./images/ico_publications.svg" alt="5." /><a href="#sec-publications">Publications</a></li>
+				<li><img src="./images/ico_awards.svg" alt="6." /><a href="#sec-funding">Funding &amp; Awards</a></li>
+				<li><img src="./images/ico_other.svg" alt="7." /><a href="#sec-other">Other</a></li>
+			</ul>
+		</div>
+	</section>
+	<section id="sec-work" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,7px);" src="./images/ico_sm_work.svg" alt="Work" />
+			Work: 2005 - Now
+		</div>
+		<div class="content">
+		    <h3><span><i>1.</i>Work</span></h3>
+		    <ul class="item-list">
+{% for work in site.data.work %}
+          <li>
+            <div class="tags"><span class="tag date">{{ work.date }}</span> — <span class="tag geo">{{ work.geo }}</span></div>
+            <div class="title">
+                <h4>{{ work.title }}</h4>,
+                <h5>
+                  {% if work.link != "" %}<a href="{{ work.link }}">{% endif %}
+                    {{ work.organisation }}
+                  {% if work.link != "" %}</a>{% endif %}
+                </h5>
+            </div>
+            <p>{{ work.description }}</p>
+          </li>
+{% endfor %}
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-education" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_education.svg" alt="Education" />
+			Education: 2005 - 2017
+		</div>
+		<div class="content">
+		    <h3><span><i style="margin-right:3px;">2.</i>Education</span></h3>
+		    <ul class="item-list">
+{% for education in site.data.education %}
+            <li>
+                <div class="tags"><span class="tag date">{{ education.date }}</span> — <span class="tag geo">{{ education.geo }}</span></div>
+                <div class="title">
+                    <h4>{{ education.title }}</h4>, <h5>{{ education.department }}, <a href="{{ education.link }}">{{ education.university }}</a></h5></div>
+                <p>{{ education.description }}{% if education.more != "" %} <a href="{{ education.more }}">Read&nbsp;more&nbsp;»</a>{% endif %}</p>
+            </li>
+{% endfor %}
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-teaching" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_teaching.svg" alt="Teaching" />
+			Teaching: 2009 - Now
+		</div>
+		<div class="content sec-teaching-content">
+		    <h3><span><i>3.</i>Teaching</span></h3>
+		    <ul class="item-list small-list">
+{% for teaching in site.data.teaching %}
+          <li{% if forloop.index > 7 %} class="more"{% endif %}>
+              <div class="tags"><span class="tag date">{{ teaching.date }}</span> — <span class="tag type">{{ teaching.type }}</span></div>
+              <div class="title">
+                  <h4>{{ teaching.title }}, </h4>
+                  <h5>{{ teaching.geo }}</h5>
+              </div>
+          </li>
+{% endfor %}
+		        <li>
+		        	<button class="sec-teaching-button" onclick="toggleSection('teaching');">+&nbsp;Expand</button>
+		        </li>
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-talks" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_talks.svg" alt="Talks" />
+			Talks (selection): 2009 - Now
+		</div>
+		<div class="content sec-talks-content">
+		    <h3><span><i>4.</i>Talks</span> <span class="small-title">(selection)</span></h3>
+		    <ul class="item-list small-list">
+{% for talks in site.data.talks %}
+            <li{% if forloop.index > 7 %} class="more"{% endif %}>
+                <div class="tags"><span class="tag date">{{ talks.date }}</span> — <span class="tag type">{{ talks.geo }}</span></div>
+                <div class="title">
+                    <h4>{{ talks.title }}, </h4>
+                    <h5>{{ talks.event }}</h5>
+                </div>
+            </li>
+  {% endfor %}
+		        <li>
+		        	<button class="sec-talks-button" onclick="toggleSection('talks');">+&nbsp;Expand</button>
+		        </li>
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-publications" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_publications.svg" alt="Publications" />
+			Publications: 2009 - Now
+		</div>
+		<div class="content sec-publications-content">
+		    <h3><span><i style="margin-right:3px;">5.</i>Publications</span></h3>
+		    <ul class="item-list small-list">
+{% for publications in site.data.publications %}
+            <li{% if forloop.index > 3 %} class="more"{% endif %}>
+                <div class="tags"><span class="tag date">{{ publications.date }}</span> — <span class="tag type">{{ publications.type }}</span></div>
+                <div class="title">
+                    <h5>{{ publications.authors }}, </h5>
+                    <h4>{{ publications.title }}</h4>
+                </div>
+                <p>{{ publications.publication }}</p>
+            </li>
+{% endfor %}
+		       	<li>
+		        	<button class="sec-publications-button" onclick="toggleSection('publications');">+&nbsp;Expand</button>
+		        </li>
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-funding" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_awards.svg" alt="Funding" />
+			Funding &amp; Awards: 2010 - Now
+		</div>
+		<div class="content sec-funding-content">
+		    <h3><span><i style="margin-right:2px;">6.</i>Funding &amp; Awards</span></h3>
+		    <ul class="item-list">
+{% for funding in site.data.funding %}
+          <li{% if forloop.index > 3 %} class="more"{% endif %}>
+              <div class="tags"><span class="tag date">{{ funding.date }}</span> — <span class="tag type">{{ funding.geo }}</span></div>
+              <div class="title">
+                  <h4>{{ funding.organisation }}</h4>
+                  <h5>{{ funding.type }}, </h5>
+              </div>
+              <p>{{ funding.description }}</p>
+          </li>
+{% endfor %}
+				  <li>
+		        <button class="sec-funding-button" onclick="toggleSection('funding');">+&nbsp;Expand</button>
+		      </li>
+		    </ul>
+		</div>
+	</section>
+	<section id="sec-activites" class="section">
+		<div class="border white">
+			<img style="transform:rotate(90deg) translate(0,8px);" src="./images/ico_sm_other.svg" alt="Work" />
+			Other Activities: 2014 - 2018
+		</div>
+		<div class="content">
+		    <h3><span><i style="margin-right:2px;">7.</i>Other Activities</span></h3>
+		    <ul class="item-list">
+{% for other in site.data.other %}
+          <li>
+              <div class="tags"><span class="tag date">{{ other.date }}</span> — <span class="tag type">{{ other.geo }}</span></div>
+              <div class="title">
+                  <h4>{{ other.title }}</h4>
+                  <h5>{{ other.type }}, </h5>
+              </div>
+              <p>{{ other.description }}</p>
+          </li>
+{% endfor %}
+		    </ul>
+		</div>
+	</section>

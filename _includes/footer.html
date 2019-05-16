@@ -1,0 +1,43 @@
+<footer id="contact">
+    <img src="{{ "./images/IMG_2906-x0.5.jpg" | absolute_url }}" srcset="{{ "./images/IMG_2906-x0.5.jpg" | absolute_url }} 500w, {{ "./images/IMG_2906.jpg" | absolute_url }} 1000w" alt="Photo of Sebastian Meier" />
+    <div class="inner-contact">
+      <h3>Contact</h3>
+      <ul>
+        <li>Email: <a href="mailto:contact@sebastianmeier.eu">contact@sebastianmeier.eu</a></li>
+        <li>Twitter: <a href="https://twitter.com/seb_meier">@seb_meier</a></li>
+        <li>GitHub: <a href="https://github.com/sebastian-meier/">sebastian-meier</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/sebastianmeier/">sebastianmeier</a></li>
+        <li>XING: <a href="https://www.xing.com/profile/Sebastian_Meier2/cv">Sebastian_Meier2</a></li>
+        <li style="margin-top:30px;"><a href="https://www.sebastianmeier.eu/privacy.html">Privacy Policy / Datenschutz</a></li>
+        <li><a href="https://www.sebastianmeier.eu/legal.html">Site Notice / Impressum</a></li>
+      </ul>
+    </div>
+    <div id="copyright"></div>
+  </footer>
+  <script type="text/javascript">
+    
+    function toggleSection(name){
+      var c = document.querySelector('.sec-' + name + '-content'),
+        b = document.querySelector('.sec-' + name + '-button');
+
+      var jumpToStart = false;
+
+      if(c.classList.contains('expanded')){
+        b.innerHTML = '+ Expand';
+        jumpToStart = true;
+      }else{
+        b.innerHTML = '- Reduce';
+      }
+      c.classList.toggle('expanded');
+      if(jumpToStart){
+        document.getElementById('sec-'+name).scrollIntoView();
+      }
+    }
+
+    var lis = document.querySelectorAll('.more');
+
+    for(var i = 0; i<lis.length; i++){
+      lis[i].classList.toggle('hidden')
+    }
+
+  </script>
