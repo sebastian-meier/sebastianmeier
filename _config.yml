@@ -4,6 +4,8 @@ plugins:
 whitelist:
   - jekyll-redirect-from
 
+exclude: ["_backup", "CNAME", "LICENSE.md", "README.md"]
+
 markdown: kramdown
 permalink: pretty
 
