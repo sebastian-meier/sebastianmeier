@@ -9,6 +9,8 @@ exclude: ["_backup", "CNAME", "LICENSE.md", "README.md"]
 markdown: kramdown
 permalink: pretty
 
+host: https://www.sebastianmeier.eu
+
 defaults:
   -
     scope:
