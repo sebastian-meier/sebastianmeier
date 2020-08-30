@@ -1,4 +1,6 @@
 date,geo,title,type,description
+2020,"Berlin, Germany",DGFK,Commission head,"Berlin, research, next generation"
+2020,"Melbourne, Australia",CityVis 2020,Chair,Workshop at ACM e-energy
 2019,"Vancouver, Canada","CityVis 2019",Organizer / Chair,Workshop at IEEE VIS
 2018,"Berlin, Germany","Tech4Germany",Mentor,HCI Mentoring for Tech4Germany Fellows
 2018,"Berlin, Germany","CityVis 2018",Organizer / Chair,Workshop at IEEE VIS & Exhibition in Berlin
@@ -7,4 +9,4 @@ date,geo,title,type,description
 2017,"Berlin, Germany","Open Geo Data Research",Local Organizer,Bringing together research on open geo data
 2016,"Potsdam, Germany","CityVis Awards",Co-Founder,Award on urban visualizations 
 2015,"Potsdam, Germany","Design Promoviert",Local Organizer,Annual conference by the German design association
-2014 - Now,"Berlin, Germany","Maptime",Co-Founder,Monthly Berlin-based meetup on maps and mapping. Workshops, talks and discussions.
+2014 - Now,"Berlin, Germany","Maptime",Co-Founder,"Monthly Berlin-based meetup on maps and mapping. Workshops, talks and discussions."
